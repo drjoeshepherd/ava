@@ -1,0 +1,591 @@
+{
+  "steps": [
+    "eyes_face",
+    "amber",
+    "arms",
+    "hands",
+    "hair",
+    "legs",
+    "feet",
+    "modules"
+  ],
+  "replaced": [],
+  "retired": [
+    "GEO_EyeRim.R (render-disabled, name kept)",
+    "GEO_EyeRim.L (render-disabled, name kept)"
+  ],
+  "edited": [
+    "Shell_Head (cheek / lower-face fullness)",
+    "Eye_Sclera.R",
+    "GEO_CanonicalIris.R",
+    "CTRL_Eyelid.R",
+    "GEO_LowerLid.R",
+    "Eye_Sclera.L",
+    "GEO_CanonicalIris.L",
+    "CTRL_Eyelid.L",
+    "GEO_LowerLid.L",
+    "GEO_UpperArmShell_L",
+    "GEO_ForearmShell_L",
+    "Joint_Elbow.L",
+    "Joint_Wrist.L",
+    "Joint_Shoulder.L",
+    "GEO_UpperArmShell_R",
+    "GEO_ForearmShell_R",
+    "Joint_Elbow.R",
+    "Joint_Wrist.R",
+    "Joint_Shoulder.R",
+    "Shell_Hand.L",
+    "Finger_Index1.L",
+    "Finger_Index2.L",
+    "Finger_Middle1.L",
+    "Finger_Middle2.L",
+    "Finger_Ring1.L",
+    "Finger_Ring2.L",
+    "Finger_Pinky1.L",
+    "Finger_Pinky2.L",
+    "Finger_Thumb1.L",
+    "Finger_Thumb2.L",
+    "Shell_Hand.R",
+    "Finger_Index1.R",
+    "Finger_Index2.R",
+    "Finger_Middle1.R",
+    "Finger_Middle2.R",
+    "Finger_Ring1.R",
+    "Finger_Ring2.R",
+    "Finger_Pinky1.R",
+    "Finger_Pinky2.R",
+    "Finger_Thumb1.R",
+    "Finger_Thumb2.R",
+    "GEO_HairBobCap_C (re-centred crown)",
+    "GEO_HairFringe_C",
+    "GEO_HairFringe_L",
+    "GEO_HairFringe_R",
+    "GEO_HairBobSideShell_R",
+    "GEO_HairBobSideShell_L",
+    "GEO_HairBobLowerCurl_R",
+    "GEO_HairBobLowerCurl_L",
+    "GEO_PelvisShell_C",
+    "GEO_TorsoShell_C",
+    "Joint_Hip.L",
+    "GEO_ThighShell_L",
+    "Joint_Knee.L",
+    "GEO_ShinShell_L",
+    "Joint_Hip.R",
+    "GEO_ThighShell_R",
+    "Joint_Knee.R",
+    "GEO_ShinShell_R",
+    "GEO_FootPod_R",
+    "GEO_FootVamp_R",
+    "GEO_FootPad_R",
+    "GEO_FootPod_L",
+    "GEO_FootVamp_L",
+    "GEO_FootPad_L",
+    "GEO_ListeningEmission_L",
+    "GEO_ListeningGasket_L",
+    "GEO_ListeningCore_L",
+    "GEO_ListeningEmission_R",
+    "GEO_ListeningGasket_R",
+    "GEO_ListeningCore_R"
+  ],
+  "created": [
+    "GEO_CrownBand_C"
+  ],
+  "materials": [
+    "MAT_Face_Polymer (cheek warmth mask)",
+    "MAT_Ava_Sclera_v03",
+    "MAT_Ava_LowerLid_v03",
+    "MAT_Ava_AmberEmission_C (locked colour restored; substrate + response mix)",
+    "MAT_Ava_AmberEmission_L (locked colour restored; substrate + response mix)",
+    "MAT_Ava_AmberEmission_R (locked colour restored; substrate + response mix)",
+    "MAT_Ava_HairSilver (softer cavity, fibre bump)"
+  ],
+  "rig_edits": [
+    {
+      "side": "L",
+      "before": {
+        "DEF_UpperArm.L": [
+          [
+            0.82,
+            0.0,
+            3.55
+          ],
+          [
+            1.18,
+            0.0,
+            2.92
+          ],
+          0.0
+        ],
+        "DEF_Forearm.L": [
+          [
+            1.18,
+            0.0,
+            2.92
+          ],
+          [
+            1.36,
+            0.0,
+            2.28
+          ],
+          0.0
+        ],
+        "DEF_Hand.L": [
+          [
+            1.36,
+            0.0,
+            2.28
+          ],
+          [
+            1.4,
+            -0.18,
+            1.92
+          ],
+          0.0
+        ]
+      },
+      "after": {
+        "DEF_UpperArm.L": [
+          [
+            0.82,
+            0.0,
+            3.55
+          ],
+          [
+            1.0084,
+            0.0,
+            2.9316
+          ],
+          0.22336
+        ],
+        "DEF_Forearm.L": [
+          [
+            1.0084,
+            0.0,
+            2.9316
+          ],
+          [
+            1.6853,
+            0.0,
+            2.3284
+          ],
+          -0.56872
+        ],
+        "DEF_Hand.L": [
+          [
+            1.6853,
+            0.0,
+            2.3284
+          ],
+          [
+            1.8511,
+            -0.1,
+            2.0337
+          ],
+          -0.55094
+        ]
+      },
+      "moved_rigidly_with_hand": [
+        "DEF_Index1.L",
+        "DEF_Index2.L",
+        "DEF_Middle1.L",
+        "DEF_Middle2.L",
+        "DEF_Pinky1.L",
+        "DEF_Pinky2.L",
+        "DEF_Ring1.L",
+        "DEF_Ring2.L",
+        "DEF_Thumb1.L",
+        "DEF_Thumb2.L"
+      ],
+      "ik_target_moved_by": [
+        0.3253,
+        0.0,
+        0.0484
+      ],
+      "pole_moved_to": [
+        1.0084,
+        -1.0,
+        2.9316
+      ]
+    },
+    {
+      "side": "R",
+      "before": {
+        "DEF_UpperArm.R": [
+          [
+            -0.82,
+            0.0,
+            3.55
+          ],
+          [
+            -1.18,
+            0.0,
+            2.92
+          ],
+          0.0
+        ],
+        "DEF_Forearm.R": [
+          [
+            -1.18,
+            0.0,
+            2.92
+          ],
+          [
+            -1.36,
+            0.0,
+            2.28
+          ],
+          0.0
+        ],
+        "DEF_Hand.R": [
+          [
+            -1.36,
+            0.0,
+            2.28
+          ],
+          [
+            -1.4,
+            -0.18,
+            1.92
+          ],
+          0.0
+        ]
+      },
+      "after": {
+        "DEF_UpperArm.R": [
+          [
+            -0.82,
+            0.0,
+            3.55
+          ],
+          [
+            -1.0084,
+            0.0,
+            2.9316
+          ],
+          -0.22336
+        ],
+        "DEF_Forearm.R": [
+          [
+            -1.0084,
+            0.0,
+            2.9316
+          ],
+          [
+            -1.6853,
+            0.0,
+            2.3284
+          ],
+          0.56872
+        ],
+        "DEF_Hand.R": [
+          [
+            -1.6853,
+            0.0,
+            2.3284
+          ],
+          [
+            -1.8511,
+            -0.1,
+            2.0337
+          ],
+          0.55094
+        ]
+      },
+      "moved_rigidly_with_hand": [
+        "DEF_Index1.R",
+        "DEF_Index2.R",
+        "DEF_Middle1.R",
+        "DEF_Middle2.R",
+        "DEF_Pinky1.R",
+        "DEF_Pinky2.R",
+        "DEF_Ring1.R",
+        "DEF_Ring2.R",
+        "DEF_Thumb1.R",
+        "DEF_Thumb2.R"
+      ],
+      "ik_target_moved_by": [
+        -0.3253,
+        0.0,
+        0.0484
+      ],
+      "pole_moved_to": [
+        -1.0084,
+        -1.0,
+        2.9316
+      ]
+    },
+    {
+      "side": "L",
+      "finger_rest_bones": {
+        "DEF_Thumb1.L": [
+          [
+            1.6487,
+            -0.1,
+            2.1493
+          ],
+          [
+            1.7164,
+            -0.1768,
+            2.0725
+          ],
+          2.41976
+        ],
+        "DEF_Thumb2.L": [
+          [
+            1.7164,
+            -0.1768,
+            2.0725
+          ],
+          [
+            1.7791,
+            -0.208,
+            1.9956
+          ],
+          2.45747
+        ],
+        "DEF_Index1.L": [
+          [
+            1.7347,
+            -0.12,
+            1.9682
+          ],
+          [
+            1.7901,
+            -0.0837,
+            1.8336
+          ],
+          2.75138
+        ],
+        "DEF_Index2.L": [
+          [
+            1.7901,
+            -0.0837,
+            1.8336
+          ],
+          [
+            1.8224,
+            -0.0017,
+            1.7551
+          ],
+          2.75138
+        ],
+        "DEF_Middle1.L": [
+          [
+            1.8126,
+            -0.12,
+            2.012
+          ],
+          [
+            1.8872,
+            -0.0808,
+            1.8737
+          ],
+          2.64666
+        ],
+        "DEF_Middle2.L": [
+          [
+            1.8872,
+            -0.0808,
+            1.8737
+          ],
+          [
+            1.9296,
+            0.0053,
+            1.7952
+          ],
+          2.64666
+        ],
+        "DEF_Ring1.L": [
+          [
+            1.8896,
+            -0.12,
+            2.0554
+          ],
+          [
+            1.9729,
+            -0.0832,
+            1.9336
+          ],
+          2.54194
+        ],
+        "DEF_Ring2.L": [
+          [
+            1.9729,
+            -0.0832,
+            1.9336
+          ],
+          [
+            2.0208,
+            -0.0013,
+            1.8636
+          ],
+          2.54194
+        ],
+        "DEF_Pinky1.L": [
+          [
+            1.9675,
+            -0.12,
+            2.0992
+          ],
+          [
+            2.0496,
+            -0.089,
+            2.006
+          ],
+          2.41976
+        ],
+        "DEF_Pinky2.L": [
+          [
+            2.0496,
+            -0.089,
+            2.006
+          ],
+          [
+            2.099,
+            -0.0168,
+            1.9498
+          ],
+          2.41976
+        ]
+      }
+    },
+    {
+      "side": "R",
+      "finger_rest_bones": {
+        "DEF_Thumb1.R": [
+          [
+            -1.6487,
+            -0.1,
+            2.1493
+          ],
+          [
+            -1.7164,
+            -0.1768,
+            2.0725
+          ],
+          -2.41976
+        ],
+        "DEF_Thumb2.R": [
+          [
+            -1.7164,
+            -0.1768,
+            2.0725
+          ],
+          [
+            -1.7791,
+            -0.208,
+            1.9956
+          ],
+          -2.45747
+        ],
+        "DEF_Index1.R": [
+          [
+            -1.7347,
+            -0.12,
+            1.9682
+          ],
+          [
+            -1.7901,
+            -0.0837,
+            1.8336
+          ],
+          -2.75138
+        ],
+        "DEF_Index2.R": [
+          [
+            -1.7901,
+            -0.0837,
+            1.8336
+          ],
+          [
+            -1.8224,
+            -0.0017,
+            1.7551
+          ],
+          -2.75138
+        ],
+        "DEF_Middle1.R": [
+          [
+            -1.8126,
+            -0.12,
+            2.012
+          ],
+          [
+            -1.8872,
+            -0.0808,
+            1.8737
+          ],
+          -2.64666
+        ],
+        "DEF_Middle2.R": [
+          [
+            -1.8872,
+            -0.0808,
+            1.8737
+          ],
+          [
+            -1.9296,
+            0.0053,
+            1.7952
+          ],
+          -2.64666
+        ],
+        "DEF_Ring1.R": [
+          [
+            -1.8896,
+            -0.12,
+            2.0554
+          ],
+          [
+            -1.9729,
+            -0.0832,
+            1.9336
+          ],
+          -2.54194
+        ],
+        "DEF_Ring2.R": [
+          [
+            -1.9729,
+            -0.0832,
+            1.9336
+          ],
+          [
+            -2.0208,
+            -0.0013,
+            1.8636
+          ],
+          -2.54194
+        ],
+        "DEF_Pinky1.R": [
+          [
+            -1.9675,
+            -0.12,
+            2.0992
+          ],
+          [
+            -2.0496,
+            -0.089,
+            2.006
+          ],
+          -2.41976
+        ],
+        "DEF_Pinky2.R": [
+          [
+            -2.0496,
+            -0.089,
+            2.006
+          ],
+          [
+            -2.099,
+            -0.0168,
+            1.9498
+          ],
+          -2.41976
+        ]
+      }
+    }
+  ],
+  "qa_notes": [],
+  "source": "C:\\Users\\joesh\\OneDrive - Dr. Joe Shepherd\\6.Content\\Ava\\02_Production\\Visual_Lock\\FrontVisualFit_v02\\Ava_v1.0_FrontVisualFit_v02.blend",
+  "v02_builder_sha256": "EB45BA454A9950C10950B603860A8EF9ABEE94DDAFA0707B237C08942755E5D8"
+}

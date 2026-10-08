@@ -1,0 +1,1919 @@
+{
+  "schema": "Ava_RigArticulation_QA",
+  "checkpoint": "02_Production/Visual_Lock/FrontVisualFit_v03/Ava_v1.0_FrontVisualFit_v03.blend",
+  "tool": "02_Production/Visual_Lock/Tools/Ava_RigQA.py",
+  "tool_sha256": "1B39C0CB67A39775193FB3B2FE4900EF5E3BE76D6265E89C7FC727534928A2BF",
+  "summary": {
+    "rig_bone_count": 52,
+    "constraints": 4,
+    "broken_constraints": 0,
+    "drivers": 24,
+    "broken_drivers": 0,
+    "actions": {
+      "Butterfly_Wing.LAction": [
+        "Butterfly_Wing.L"
+      ],
+      "Butterfly_Wing.RAction": [
+        "Butterfly_Wing.R"
+      ],
+      "CTRL_ButterflyAction": [
+        "CTRL_Butterfly"
+      ],
+      "CTRL_EyeAim.LAction": [
+        "CTRL_EyeAim.L"
+      ],
+      "CTRL_EyeAim.RAction": [
+        "CTRL_EyeAim.R"
+      ],
+      "RIG_Ava_MasterAction": [
+        "RIG_Ava_Master"
+      ]
+    },
+    "animation_data_unchanged_vs_v02": true,
+    "camera_fingerprint_unchanged_vs_v02": true,
+    "lighting_fingerprint_unchanged_vs_v02": true,
+    "material_lock_values_match": true,
+    "legacy_render_enabled": [],
+    "finger_articulation_pass": true,
+    "finger_articulation_worst": {
+      "rigid_residual": 7.291298206367343e-07,
+      "axis_angle_deg": 0.028624644319540343,
+      "knuckle_offset": 1.1640888621005886e-06,
+      "segment_gap": 0
+    },
+    "finger_articulation_worst_v02_for_comparison": {
+      "rigid_residual": 7.957833959352189e-07,
+      "axis_angle_deg": 26.707833019239732,
+      "knuckle_offset": 0.3550594686626137,
+      "segment_gap": 0
+    },
+    "returned_to_neutral": true,
+    "arm_ik_fk_pass": true,
+    "eye_aim": "CTRL_EyeAim moves the legacy Eye_Iris (drivers) but NOT the live GEO_CanonicalIris (parented to an undriven MCH_EyeAim empty). Identical in v02 and v14-derived files: pre-existing, not changed (rig/driver change not authorised).",
+    "eyelid_blink": "blink driver responds (CTRL_Eyelid scale Z 1.0 -> 0.18 at blink=1) but local Z is world depth, so the lash line does not visibly close the eye. Pre-existing v14 semantics, unchanged.",
+    "listening_rings_independent": true,
+    "chest_light_responds": true
+  },
+  "v03": {
+    "blend": "C:\\Users\\joesh\\OneDrive - Dr. Joe Shepherd\\6.Content\\Ava\\02_Production\\Visual_Lock\\FrontVisualFit_v03\\Ava_v1.0_FrontVisualFit_v03.blend",
+    "blender": "5.2.2 LTS",
+    "rig": {
+      "bone_count": 52,
+      "constraints": [
+        {
+          "bone": "DEF_Forearm.L",
+          "type": "IK",
+          "valid": true
+        },
+        {
+          "bone": "DEF_Forearm.R",
+          "type": "IK",
+          "valid": true
+        },
+        {
+          "bone": "DEF_Shin.L",
+          "type": "IK",
+          "valid": true
+        },
+        {
+          "bone": "DEF_Shin.R",
+          "type": "IK",
+          "valid": true
+        }
+      ],
+      "object_constraints": [],
+      "constraint_count": 4,
+      "broken_constraints": []
+    },
+    "drivers": {
+      "count": 24,
+      "broken": [],
+      "list": [
+        {
+          "owner": "CTRL_Brow.L",
+          "path": "location",
+          "index": 2,
+          "expr": ".12*b",
+          "valid": true
+        },
+        {
+          "owner": "CTRL_Brow.R",
+          "path": "location",
+          "index": 2,
+          "expr": ".12*b",
+          "valid": true
+        },
+        {
+          "owner": "CTRL_Eyelid.L",
+          "path": "scale",
+          "index": 2,
+          "expr": "1-0.82*b",
+          "valid": true
+        },
+        {
+          "owner": "CTRL_Eyelid.R",
+          "path": "scale",
+          "index": 2,
+          "expr": "1-0.82*b",
+          "valid": true
+        },
+        {
+          "owner": "CTRL_Mouth",
+          "path": "scale",
+          "index": 2,
+          "expr": "1-.28*s",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Catchlight.L",
+          "path": "location",
+          "index": 0,
+          "expr": "0.4699999988079071+(t-0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Catchlight.L",
+          "path": "location",
+          "index": 2,
+          "expr": "5.5+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Catchlight.R",
+          "path": "location",
+          "index": 0,
+          "expr": "-0.4699999988079071+(t--0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Catchlight.R",
+          "path": "location",
+          "index": 2,
+          "expr": "5.5+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Iris.L",
+          "path": "location",
+          "index": 0,
+          "expr": "0.5400000214576721+(t-0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Iris.L",
+          "path": "location",
+          "index": 2,
+          "expr": "5.380000114440918+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Iris.R",
+          "path": "location",
+          "index": 0,
+          "expr": "-0.5400000214576721+(t--0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Iris.R",
+          "path": "location",
+          "index": 2,
+          "expr": "5.380000114440918+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Pupil.L",
+          "path": "location",
+          "index": 0,
+          "expr": "0.5400000214576721+(t-0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Pupil.L",
+          "path": "location",
+          "index": 2,
+          "expr": "5.380000114440918+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Pupil.R",
+          "path": "location",
+          "index": 0,
+          "expr": "-0.5400000214576721+(t--0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Pupil.R",
+          "path": "location",
+          "index": 2,
+          "expr": "5.380000114440918+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "RIG_Ava_Master",
+          "path": "pose.bones[\"DEF_Forearm.L\"].constraints[\"IK\"].influence",
+          "index": 0,
+          "expr": "v",
+          "valid": true
+        },
+        {
+          "owner": "RIG_Ava_Master",
+          "path": "pose.bones[\"DEF_Shin.L\"].constraints[\"IK\"].influence",
+          "index": 0,
+          "expr": "v",
+          "valid": true
+        },
+        {
+          "owner": "RIG_Ava_Master",
+          "path": "pose.bones[\"DEF_Forearm.R\"].constraints[\"IK\"].influence",
+          "index": 0,
+          "expr": "v",
+          "valid": true
+        },
+        {
+          "owner": "RIG_Ava_Master",
+          "path": "pose.bones[\"DEF_Shin.R\"].constraints[\"IK\"].influence",
+          "index": 0,
+          "expr": "v",
+          "valid": true
+        },
+        {
+          "owner": "MAT_Ava_AmberEmission_C",
+          "path": "nodes[\"Principled BSDF\"].inputs[29].default_value",
+          "index": 0,
+          "expr": ".2+v*7",
+          "valid": true
+        },
+        {
+          "owner": "MAT_Ava_AmberEmission_L",
+          "path": "nodes[\"Principled BSDF\"].inputs[29].default_value",
+          "index": 0,
+          "expr": ".2+v*7",
+          "valid": true
+        },
+        {
+          "owner": "MAT_Ava_AmberEmission_R",
+          "path": "nodes[\"Principled BSDF\"].inputs[29].default_value",
+          "index": 0,
+          "expr": ".2+v*7",
+          "valid": true
+        }
+      ]
+    },
+    "actions": {
+      "count": 6,
+      "inventory": {
+        "Butterfly_Wing.LAction": {
+          "owners": [
+            "Butterfly_Wing.L"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            163.0
+          ],
+          "sha256": "1DDAF27B04B15701ED3CC26E85957706E2EA898C6C22C188FF608573C890AED5"
+        },
+        "Butterfly_Wing.RAction": {
+          "owners": [
+            "Butterfly_Wing.R"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            163.0
+          ],
+          "sha256": "60B3894FA7DEDFC7F72DC8AF178367CBA2D256FA0214B788951296D9C0CAF0AB"
+        },
+        "CTRL_ButterflyAction": {
+          "owners": [
+            "CTRL_Butterfly"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            168.0
+          ],
+          "sha256": "038FDF584F28977141B6821361142A8571DB6670D594B66566CA99414C31F71A"
+        },
+        "CTRL_EyeAim.LAction": {
+          "owners": [
+            "CTRL_EyeAim.L"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            168.0
+          ],
+          "sha256": "930CC20ED4292CDC022978FC2C63FDDCB3E2B5CE98105DB806FC4DB2EEF7518C"
+        },
+        "CTRL_EyeAim.RAction": {
+          "owners": [
+            "CTRL_EyeAim.R"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            168.0
+          ],
+          "sha256": "7B977AD456F015A09B11A316EED3D39A7F6CFDEB1094FF953EA91048FDDDD104"
+        },
+        "RIG_Ava_MasterAction": {
+          "owners": [
+            "RIG_Ava_Master"
+          ],
+          "channels": 23,
+          "frame_range": [
+            1.0,
+            168.0
+          ],
+          "sha256": "64114357A1683A73A0F4F379437DE2A3BE945EC7680CCB3A19CE46DF23458CF8"
+        }
+      },
+      "all_sha256": "240E6A4BA9D6BFB93BEE8108AF7A4959A22A57C811A05B826FFF9AD856E0B91D"
+    },
+    "rig_keyed_props_frame1": {
+      "listen_L": 0.25,
+      "listen_R": 0.25,
+      "chest_intensity": 0.30000001192092896,
+      "blink_L": 0.0,
+      "blink_R": 0.0,
+      "mouth_smile": 0.0
+    },
+    "camera_fingerprint": "6A0E483731858D42DB5250D05C80506A4D939534EF304564B24000DDEFA2E140",
+    "lighting_fingerprint": "ADE69C2E97F62CE94736DE7E209E4533062BD87EFA59477B708A8B32AAA9AC48",
+    "lighting": {
+      "render_enabled_lights": [
+        "LIGHT_FILL",
+        "LIGHT_KEY",
+        "LIGHT_RIM"
+      ],
+      "view_transform": "AgX",
+      "look": "None"
+    },
+    "material_lock": {
+      "all_match": true,
+      "checks": {
+        "MAT_Ava_CeramicWhite": {
+          "base_rgb": [
+            [
+              0.86,
+              0.85,
+              0.82
+            ],
+            [
+              0.86,
+              0.85,
+              0.82
+            ]
+          ],
+          "metallic": [
+            0.015,
+            0.015
+          ],
+          "roughness": [
+            0.48,
+            0.48
+          ],
+          "specular_ior_level": [
+            0.35,
+            0.35
+          ]
+        },
+        "MAT_Ava_Graphite": {
+          "base_rgb": [
+            [
+              0.025,
+              0.03,
+              0.036
+            ],
+            [
+              0.025,
+              0.03,
+              0.036
+            ]
+          ],
+          "metallic": [
+            0.38,
+            0.38
+          ],
+          "roughness": [
+            0.36,
+            0.36
+          ],
+          "specular_ior_level": [
+            0.38,
+            0.38
+          ]
+        },
+        "MAT_Ava_AccentGray": {
+          "base_rgb": [
+            [
+              0.23,
+              0.245,
+              0.265
+            ],
+            [
+              0.23,
+              0.245,
+              0.265
+            ]
+          ],
+          "metallic": [
+            0.22,
+            0.22
+          ],
+          "roughness": [
+            0.42,
+            0.42
+          ]
+        },
+        "MAT_Ava_AmberEmission_C": {
+          "emission_rgb": [
+            [
+              1.0,
+              0.43,
+              0.008
+            ],
+            [
+              1.0,
+              0.43,
+              0.008
+            ]
+          ]
+        },
+        "MAT_Ava_AmberEmission_L": {
+          "emission_rgb": [
+            [
+              1.0,
+              0.43,
+              0.008
+            ],
+            [
+              1.0,
+              0.43,
+              0.008
+            ]
+          ]
+        },
+        "MAT_Ava_AmberEmission_R": {
+          "emission_rgb": [
+            [
+              1.0,
+              0.43,
+              0.008
+            ],
+            [
+              1.0,
+              0.43,
+              0.008
+            ]
+          ]
+        }
+      }
+    },
+    "legacy_render_state": {
+      "objects": {
+        "Canon_ChestBezel": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ChestEmission": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_HandBack.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_HandBack.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_IrisRim.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_IrisRim.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningCore.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningCore.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningEmission.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningEmission.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningHousing.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningHousing.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningInset.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningInset.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningOuter.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Canon_ListeningOuter.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairGroup_Back.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairGroup_Back.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairGroup_Front.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairGroup_Front.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairGroup_Side.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairGroup_Side.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairGroup_Sweep.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairGroup_Sweep.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairShell_Back": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairShell_Crown": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairShell_Fringe.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairShell_Fringe.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairShell_FringeCenter": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairShell_Side.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "HairShell_Side.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "RETIRED_v02_GEO_HairFringe_C": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_Retired_FrontVisualFit_v02"
+          ]
+        },
+        "RETIRED_v02_GEO_HairFringe_L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_Retired_FrontVisualFit_v02"
+          ]
+        },
+        "RETIRED_v02_GEO_HairFringe_R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_Retired_FrontVisualFit_v02"
+          ]
+        },
+        "Shell_Foot.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Foot.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Forearm.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Forearm.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Hand.L": {
+          "render_enabled": true,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Hand.R": {
+          "render_enabled": true,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Head": {
+          "render_enabled": true,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Pelvis": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Shin.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Shin.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Thigh.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Thigh.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_Torso": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_UpperArm.L": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        },
+        "Shell_UpperArm.R": {
+          "render_enabled": false,
+          "collections": [
+            "AVA_MODEL"
+          ]
+        }
+      },
+      "render_enabled_legacy": [],
+      "live_objects_with_legacy_prefix": [
+        "Shell_Hand.L",
+        "Shell_Hand.R",
+        "Shell_Head"
+      ]
+    },
+    "finger_articulation": {
+      "method": "Each finger/thumb: both segments rotated about their bone X axis by +45 and -30 degrees (in memory). rigid_residual = max distance between each mesh vertex and the bone's own motion applied to its rest position; axis_angle_deg = angle between the segment mesh principal axis and its bone axis after the curl; knuckle_offset = distance from the bone head (pivot) to the mesh axis line; segment_gap = distance between segment-1 bone tail and segment-2 bone head after the curl.",
+      "thresholds": {
+        "rigid_residual": 0.0001,
+        "axis_angle_deg": 2.0,
+        "knuckle_offset": 0.01,
+        "segment_gap": 0.0001
+      },
+      "worst": {
+        "rigid_residual": 7.291298206367343e-07,
+        "axis_angle_deg": 0.028624644319540343,
+        "knuckle_offset": 1.1640888621005886e-06,
+        "segment_gap": 0
+      },
+      "pass": true,
+      "per_test": {
+        "Thumb.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.478711107352004e-07,
+            "axis_angle_deg": 0.015442584986603324,
+            "knuckle_offset": 7.957204490054605e-07
+          },
+          "seg2": {
+            "rigid_residual": 6.848052318737541e-07,
+            "axis_angle_deg": 0.02211732967542711,
+            "knuckle_offset": 7.183685306924452e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Thumb.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 3.749056346836425e-07,
+            "axis_angle_deg": 0.021557306373580574,
+            "knuckle_offset": 2.2167825023549556e-07
+          },
+          "seg2": {
+            "rigid_residual": 6.22290760809812e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 6.914403734084437e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Index.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.2098083538618706e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 3.341566708920759e-07
+          },
+          "seg2": {
+            "rigid_residual": 5.748063779469106e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.523645846737034e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Index.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 4.805480091749757e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.277731980098989e-07
+          },
+          "seg2": {
+            "rigid_residual": 6.02714670185944e-07,
+            "axis_angle_deg": 0.018669174929155517,
+            "knuckle_offset": 4.5548553548394345e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Middle.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 6.304881870162496e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 4.960934276764625e-07
+          },
+          "seg2": {
+            "rigid_residual": 2.9200193199910854e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 1.9253841352214464e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Middle.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 7.291298206367343e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 2.4131860079268943e-07
+          },
+          "seg2": {
+            "rigid_residual": 2.8115454709698567e-07,
+            "axis_angle_deg": 0.028624644319540343,
+            "knuckle_offset": 1.2840773590076087e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Ring.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 4.460403188197543e-07,
+            "axis_angle_deg": 0.0098911704778757,
+            "knuckle_offset": 7.679882693323606e-08
+          },
+          "seg2": {
+            "rigid_residual": 3.998401124775034e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.239068206369395e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Ring.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 5.383012255486382e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 8.421298667990195e-07
+          },
+          "seg2": {
+            "rigid_residual": 3.6568615412139974e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 1.1148771477525369e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Pinky.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 6.036349862971632e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.527883950846531e-07
+          },
+          "seg2": {
+            "rigid_residual": 4.460403188197543e-07,
+            "axis_angle_deg": 0.019782341029446364,
+            "knuckle_offset": 3.977041828955453e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Pinky.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 3.7170856247146194e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.904908286089956e-08
+          },
+          "seg2": {
+            "rigid_residual": 6.29783435434227e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 2.8237663602584747e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Thumb.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.478711107352004e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.42708802484694e-07
+          },
+          "seg2": {
+            "rigid_residual": 7.152557373046875e-07,
+            "axis_angle_deg": 0.0098911704778757,
+            "knuckle_offset": 9.708456025498012e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Thumb.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 3.749056346836425e-07,
+            "axis_angle_deg": 0.010778653139107874,
+            "knuckle_offset": 2.1854352907906342e-07
+          },
+          "seg2": {
+            "rigid_residual": 6.181737337318522e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 6.871848042437015e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Index.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.2098083538618706e-07,
+            "axis_angle_deg": 0.01850468559863808,
+            "knuckle_offset": 3.833611520286779e-07
+          },
+          "seg2": {
+            "rigid_residual": 5.591411304263389e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 2.1107147677987274e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Index.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 4.915124923727108e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.338387791088446e-07
+          },
+          "seg2": {
+            "rigid_residual": 6.02714670185944e-07,
+            "axis_angle_deg": 0.028517635926616748,
+            "knuckle_offset": 2.445307091054558e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Middle.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 5.369072623311421e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 1.2025246315873394e-07
+          },
+          "seg2": {
+            "rigid_residual": 3.4240261593687705e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 8.682004634768644e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Middle.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 5.6722361775262e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 2.8587810759171353e-07
+          },
+          "seg2": {
+            "rigid_residual": 2.8115454709698567e-07,
+            "axis_angle_deg": 0.011859096801506815,
+            "knuckle_offset": 1.168290252866128e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Ring.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 4.3392836387637365e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.161510365645061e-07
+          },
+          "seg2": {
+            "rigid_residual": 4.5000519962732493e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.424232473940201e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Ring.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 5.364418029785156e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 4.0959562596379e-07
+          },
+          "seg2": {
+            "rigid_residual": 3.384893146634265e-07,
+            "axis_angle_deg": 0.014836755739843227,
+            "knuckle_offset": 8.263702403318248e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Pinky.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 5.748063779469106e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 1.112279919422349e-06
+          },
+          "seg2": {
+            "rigid_residual": 4.460403188197543e-07,
+            "axis_angle_deg": 0.013988227454926254,
+            "knuckle_offset": 2.3292748106363624e-07
+          },
+          "joint_gap": 0.0
+        },
+        "Pinky.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 3.7170856247146194e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 5.931757177087813e-07
+          },
+          "seg2": {
+            "rigid_residual": 6.29783435434227e-07,
+            "axis_angle_deg": 0.0,
+            "knuckle_offset": 1.1640888621005886e-06
+          },
+          "joint_gap": 0.0
+        }
+      },
+      "returned_to_neutral": true
+    },
+    "arm_ik_fk": {
+      "tests": {
+        "L": {
+          "fk_forearm_30deg_wrist_moved": 0.4693291771894865,
+          "fk_forearm_shell_rigid_residual": 4.995779578161303e-07,
+          "ik_enabled_at_rest_wrist_drift": 7.354594873936812e-07,
+          "ik_target_moved_0.12": true,
+          "ik_wrist_to_target_distance": 7.616009579927096e-07,
+          "ik_wrist_moved": 0.12000054224079734
+        },
+        "R": {
+          "fk_forearm_30deg_wrist_moved": 0.4693291771894865,
+          "fk_forearm_shell_rigid_residual": 4.995779578161303e-07,
+          "ik_enabled_at_rest_wrist_drift": 8.760057959973257e-07,
+          "ik_target_moved_0.12": true,
+          "ik_wrist_to_target_distance": 9.253129182016864e-07,
+          "ik_wrist_moved": 0.11999910256823937
+        }
+      },
+      "pass": true
+    },
+    "eye_aim": {
+      "L": {
+        "ctrl_moved_x": 0.1,
+        "GEO_CanonicalIris_moved": 0.0,
+        "legacy_Eye_Iris_moved": 0.00631999962287052,
+        "GEO_CanonicalIris_parent": "MCH_EyeAim.L"
+      },
+      "R": {
+        "ctrl_moved_x": 0.1,
+        "GEO_CanonicalIris_moved": 0.0,
+        "legacy_Eye_Iris_moved": 0.006320029555538443,
+        "GEO_CanonicalIris_parent": "MCH_EyeAim.R"
+      }
+    },
+    "eyelid_blink": {
+      "L": {
+        "scale_neutral": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "scale_blink_1": [
+          1.0,
+          1.0,
+          0.18
+        ],
+        "driver_responds": true,
+        "note": "Driver scales the eyelid control's local Z (inherited v14 semantics); see change log."
+      },
+      "R": {
+        "scale_neutral": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "scale_blink_1": [
+          1.0,
+          1.0,
+          0.18
+        ],
+        "driver_responds": true,
+        "note": "Driver scales the eyelid control's local Z (inherited v14 semantics); see change log."
+      }
+    },
+    "listening_ring_independence": {
+      "strengths": {
+        "listen_L=1,listen_R=0": {
+          "L": 7.2,
+          "R": 0.2
+        },
+        "listen_L=0,listen_R=1": {
+          "L": 0.2,
+          "R": 7.2
+        }
+      },
+      "independent": true,
+      "rings_use_own_material": {
+        "L": "MAT_Ava_AmberEmission_L",
+        "R": "MAT_Ava_AmberEmission_R"
+      }
+    },
+    "chest_light_control": {
+      "strength_at_0": 0.2,
+      "strength_at_1": 7.2,
+      "responds": true,
+      "emitter_objects": [
+        "GEO_ChestCore_C",
+        "GEO_ChestEmission_C"
+      ]
+    },
+    "note": "In-memory only; actions were detached for the override tests and restored; nothing was saved."
+  },
+  "v02_reference": {
+    "rig": {
+      "bone_count": 52,
+      "constraints": [
+        {
+          "bone": "DEF_Forearm.L",
+          "type": "IK",
+          "valid": true
+        },
+        {
+          "bone": "DEF_Forearm.R",
+          "type": "IK",
+          "valid": true
+        },
+        {
+          "bone": "DEF_Shin.L",
+          "type": "IK",
+          "valid": true
+        },
+        {
+          "bone": "DEF_Shin.R",
+          "type": "IK",
+          "valid": true
+        }
+      ],
+      "object_constraints": [],
+      "constraint_count": 4,
+      "broken_constraints": []
+    },
+    "drivers": {
+      "count": 24,
+      "broken": [],
+      "list": [
+        {
+          "owner": "CTRL_Brow.L",
+          "path": "location",
+          "index": 2,
+          "expr": ".12*b",
+          "valid": true
+        },
+        {
+          "owner": "CTRL_Brow.R",
+          "path": "location",
+          "index": 2,
+          "expr": ".12*b",
+          "valid": true
+        },
+        {
+          "owner": "CTRL_Eyelid.L",
+          "path": "scale",
+          "index": 2,
+          "expr": "1-0.82*b",
+          "valid": true
+        },
+        {
+          "owner": "CTRL_Eyelid.R",
+          "path": "scale",
+          "index": 2,
+          "expr": "1-0.82*b",
+          "valid": true
+        },
+        {
+          "owner": "CTRL_Mouth",
+          "path": "scale",
+          "index": 2,
+          "expr": "1-.28*s",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Catchlight.L",
+          "path": "location",
+          "index": 0,
+          "expr": "0.4699999988079071+(t-0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Catchlight.L",
+          "path": "location",
+          "index": 2,
+          "expr": "5.5+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Catchlight.R",
+          "path": "location",
+          "index": 0,
+          "expr": "-0.4699999988079071+(t--0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Catchlight.R",
+          "path": "location",
+          "index": 2,
+          "expr": "5.5+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Iris.L",
+          "path": "location",
+          "index": 0,
+          "expr": "0.5400000214576721+(t-0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Iris.L",
+          "path": "location",
+          "index": 2,
+          "expr": "5.380000114440918+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Iris.R",
+          "path": "location",
+          "index": 0,
+          "expr": "-0.5400000214576721+(t--0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Iris.R",
+          "path": "location",
+          "index": 2,
+          "expr": "5.380000114440918+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Pupil.L",
+          "path": "location",
+          "index": 0,
+          "expr": "0.5400000214576721+(t-0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Pupil.L",
+          "path": "location",
+          "index": 2,
+          "expr": "5.380000114440918+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Pupil.R",
+          "path": "location",
+          "index": 0,
+          "expr": "-0.5400000214576721+(t--0.54)*.08",
+          "valid": true
+        },
+        {
+          "owner": "Eye_Pupil.R",
+          "path": "location",
+          "index": 2,
+          "expr": "5.380000114440918+(t-5.38)*.08",
+          "valid": true
+        },
+        {
+          "owner": "RIG_Ava_Master",
+          "path": "pose.bones[\"DEF_Forearm.L\"].constraints[\"IK\"].influence",
+          "index": 0,
+          "expr": "v",
+          "valid": true
+        },
+        {
+          "owner": "RIG_Ava_Master",
+          "path": "pose.bones[\"DEF_Shin.L\"].constraints[\"IK\"].influence",
+          "index": 0,
+          "expr": "v",
+          "valid": true
+        },
+        {
+          "owner": "RIG_Ava_Master",
+          "path": "pose.bones[\"DEF_Forearm.R\"].constraints[\"IK\"].influence",
+          "index": 0,
+          "expr": "v",
+          "valid": true
+        },
+        {
+          "owner": "RIG_Ava_Master",
+          "path": "pose.bones[\"DEF_Shin.R\"].constraints[\"IK\"].influence",
+          "index": 0,
+          "expr": "v",
+          "valid": true
+        },
+        {
+          "owner": "MAT_Ava_AmberEmission_C",
+          "path": "nodes[\"Principled BSDF\"].inputs[29].default_value",
+          "index": 0,
+          "expr": ".2+v*7",
+          "valid": true
+        },
+        {
+          "owner": "MAT_Ava_AmberEmission_L",
+          "path": "nodes[\"Principled BSDF\"].inputs[29].default_value",
+          "index": 0,
+          "expr": ".2+v*7",
+          "valid": true
+        },
+        {
+          "owner": "MAT_Ava_AmberEmission_R",
+          "path": "nodes[\"Principled BSDF\"].inputs[29].default_value",
+          "index": 0,
+          "expr": ".2+v*7",
+          "valid": true
+        }
+      ]
+    },
+    "actions": {
+      "count": 6,
+      "inventory": {
+        "Butterfly_Wing.LAction": {
+          "owners": [
+            "Butterfly_Wing.L"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            163.0
+          ],
+          "sha256": "1DDAF27B04B15701ED3CC26E85957706E2EA898C6C22C188FF608573C890AED5"
+        },
+        "Butterfly_Wing.RAction": {
+          "owners": [
+            "Butterfly_Wing.R"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            163.0
+          ],
+          "sha256": "60B3894FA7DEDFC7F72DC8AF178367CBA2D256FA0214B788951296D9C0CAF0AB"
+        },
+        "CTRL_ButterflyAction": {
+          "owners": [
+            "CTRL_Butterfly"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            168.0
+          ],
+          "sha256": "038FDF584F28977141B6821361142A8571DB6670D594B66566CA99414C31F71A"
+        },
+        "CTRL_EyeAim.LAction": {
+          "owners": [
+            "CTRL_EyeAim.L"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            168.0
+          ],
+          "sha256": "930CC20ED4292CDC022978FC2C63FDDCB3E2B5CE98105DB806FC4DB2EEF7518C"
+        },
+        "CTRL_EyeAim.RAction": {
+          "owners": [
+            "CTRL_EyeAim.R"
+          ],
+          "channels": 3,
+          "frame_range": [
+            1.0,
+            168.0
+          ],
+          "sha256": "7B977AD456F015A09B11A316EED3D39A7F6CFDEB1094FF953EA91048FDDDD104"
+        },
+        "RIG_Ava_MasterAction": {
+          "owners": [
+            "RIG_Ava_Master"
+          ],
+          "channels": 23,
+          "frame_range": [
+            1.0,
+            168.0
+          ],
+          "sha256": "64114357A1683A73A0F4F379437DE2A3BE945EC7680CCB3A19CE46DF23458CF8"
+        }
+      },
+      "all_sha256": "240E6A4BA9D6BFB93BEE8108AF7A4959A22A57C811A05B826FFF9AD856E0B91D"
+    },
+    "camera_fingerprint": "6A0E483731858D42DB5250D05C80506A4D939534EF304564B24000DDEFA2E140",
+    "lighting_fingerprint": "ADE69C2E97F62CE94736DE7E209E4533062BD87EFA59477B708A8B32AAA9AC48",
+    "material_lock": {
+      "all_match": false,
+      "checks": {
+        "MAT_Ava_CeramicWhite": {
+          "base_rgb": [
+            [
+              0.86,
+              0.85,
+              0.82
+            ],
+            [
+              0.86,
+              0.85,
+              0.82
+            ]
+          ],
+          "metallic": [
+            0.015,
+            0.015
+          ],
+          "roughness": [
+            0.48,
+            0.48
+          ],
+          "specular_ior_level": [
+            0.35,
+            0.35
+          ]
+        },
+        "MAT_Ava_Graphite": {
+          "base_rgb": [
+            [
+              0.025,
+              0.03,
+              0.036
+            ],
+            [
+              0.025,
+              0.03,
+              0.036
+            ]
+          ],
+          "metallic": [
+            0.38,
+            0.38
+          ],
+          "roughness": [
+            0.36,
+            0.36
+          ],
+          "specular_ior_level": [
+            0.38,
+            0.38
+          ]
+        },
+        "MAT_Ava_AccentGray": {
+          "base_rgb": [
+            [
+              0.23,
+              0.245,
+              0.265
+            ],
+            [
+              0.23,
+              0.245,
+              0.265
+            ]
+          ],
+          "metallic": [
+            0.22,
+            0.22
+          ],
+          "roughness": [
+            0.42,
+            0.42
+          ]
+        },
+        "MAT_Ava_AmberEmission_C": {
+          "emission_rgb": [
+            [
+              0.26,
+              0.1118,
+              0.00208
+            ],
+            [
+              1.0,
+              0.43,
+              0.008
+            ]
+          ]
+        },
+        "MAT_Ava_AmberEmission_L": {
+          "emission_rgb": [
+            [
+              0.26,
+              0.1118,
+              0.00208
+            ],
+            [
+              1.0,
+              0.43,
+              0.008
+            ]
+          ]
+        },
+        "MAT_Ava_AmberEmission_R": {
+          "emission_rgb": [
+            [
+              0.26,
+              0.1118,
+              0.00208
+            ],
+            [
+              1.0,
+              0.43,
+              0.008
+            ]
+          ]
+        }
+      }
+    },
+    "finger_articulation": {
+      "method": "Each finger/thumb: both segments rotated about their bone X axis by +45 and -30 degrees (in memory). rigid_residual = max distance between each mesh vertex and the bone's own motion applied to its rest position; axis_angle_deg = angle between the segment mesh principal axis and its bone axis after the curl; knuckle_offset = distance from the bone head (pivot) to the mesh axis line; segment_gap = distance between segment-1 bone tail and segment-2 bone head after the curl.",
+      "thresholds": {
+        "rigid_residual": 0.0001,
+        "axis_angle_deg": 2.0,
+        "knuckle_offset": 0.01,
+        "segment_gap": 0.0001
+      },
+      "worst": {
+        "rigid_residual": 7.957833959352189e-07,
+        "axis_angle_deg": 26.707833019239732,
+        "knuckle_offset": 0.3550594686626137,
+        "segment_gap": 0
+      },
+      "pass": false,
+      "per_test": {
+        "Thumb.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 5.462855929083633e-07,
+            "axis_angle_deg": 26.70779051489781,
+            "knuckle_offset": 0.24942431498364595
+          },
+          "seg2": {
+            "rigid_residual": 6.07850493620966e-07,
+            "axis_angle_deg": 25.659204092941234,
+            "knuckle_offset": 0.2658453458676677
+          },
+          "joint_gap": 0.0
+        },
+        "Thumb.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 5.462855929083633e-07,
+            "axis_angle_deg": 26.707833019239732,
+            "knuckle_offset": 0.24942435080563594
+          },
+          "seg2": {
+            "rigid_residual": 5.057621821307283e-07,
+            "axis_angle_deg": 25.659254555693703,
+            "knuckle_offset": 0.2658452473387573
+          },
+          "joint_gap": 0.0
+        },
+        "Index.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 2.8361180887631e-07,
+            "axis_angle_deg": 21.094393710150168,
+            "knuckle_offset": 0.2644523757852819
+          },
+          "seg2": {
+            "rigid_residual": 7.592489838043571e-07,
+            "axis_angle_deg": 24.765039638750004,
+            "knuckle_offset": 0.3550594489900796
+          },
+          "joint_gap": 0.0
+        },
+        "Index.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 2.9200193199910854e-07,
+            "axis_angle_deg": 21.094401716377874,
+            "knuckle_offset": 0.264452026035978
+          },
+          "seg2": {
+            "rigid_residual": 4.702727150338739e-07,
+            "axis_angle_deg": 24.765024607451483,
+            "knuckle_offset": 0.35505913160637886
+          },
+          "joint_gap": 0.0
+        },
+        "Middle.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.478711107352004e-07,
+            "axis_angle_deg": 19.132349847636423,
+            "knuckle_offset": 0.18949990948403456
+          },
+          "seg2": {
+            "rigid_residual": 4.3392836387637365e-07,
+            "axis_angle_deg": 19.692166652888186,
+            "knuckle_offset": 0.2909352204277557
+          },
+          "joint_gap": 0.0
+        },
+        "Middle.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 1.9082797281243946e-07,
+            "axis_angle_deg": 19.132342032805937,
+            "knuckle_offset": 0.18949930006851948
+          },
+          "seg2": {
+            "rigid_residual": 3.816559456248789e-07,
+            "axis_angle_deg": 19.69218502223777,
+            "knuckle_offset": 0.29093530565793124
+          },
+          "joint_gap": 0.0
+        },
+        "Ring.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.729013727975547e-07,
+            "axis_angle_deg": 17.90941969719041,
+            "knuckle_offset": 0.2062602543178267
+          },
+          "seg2": {
+            "rigid_residual": 5.136039239053156e-07,
+            "axis_angle_deg": 16.087290872005177,
+            "knuckle_offset": 0.25430896989564206
+          },
+          "joint_gap": 0.0
+        },
+        "Ring.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 3.8743019104003906e-07,
+            "axis_angle_deg": 17.909428199857544,
+            "knuckle_offset": 0.2062612338488176
+          },
+          "seg2": {
+            "rigid_residual": 3.488272401904948e-07,
+            "axis_angle_deg": 16.087344983489515,
+            "knuckle_offset": 0.25430972938878244
+          },
+          "joint_gap": 0.0
+        },
+        "Pinky.L @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.749056346836425e-07,
+            "axis_angle_deg": 16.01486622300876,
+            "knuckle_offset": 0.2897535538010357
+          },
+          "seg2": {
+            "rigid_residual": 7.215917118074447e-07,
+            "axis_angle_deg": 10.723611998876093,
+            "knuckle_offset": 0.27733150622212593
+          },
+          "joint_gap": 0.0
+        },
+        "Pinky.L @-30 deg": {
+          "seg1": {
+            "rigid_residual": 5.826716064219818e-07,
+            "axis_angle_deg": 16.014885757990953,
+            "knuckle_offset": 0.2897535718808461
+          },
+          "seg2": {
+            "rigid_residual": 7.957833959352189e-07,
+            "axis_angle_deg": 10.723695163598242,
+            "knuckle_offset": 0.2773314224780879
+          },
+          "joint_gap": 0.0
+        },
+        "Thumb.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 5.462855929083633e-07,
+            "axis_angle_deg": 26.707792414534545,
+            "knuckle_offset": 0.2494243662079232
+          },
+          "seg2": {
+            "rigid_residual": 6.07850493620966e-07,
+            "axis_angle_deg": 25.65921641596625,
+            "knuckle_offset": 0.265845335357919
+          },
+          "joint_gap": 0.0
+        },
+        "Thumb.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 5.462855929083633e-07,
+            "axis_angle_deg": 26.707821383979176,
+            "knuckle_offset": 0.24942425465800303
+          },
+          "seg2": {
+            "rigid_residual": 5.057621821307283e-07,
+            "axis_angle_deg": 25.65925495619137,
+            "knuckle_offset": 0.2658452565347905
+          },
+          "joint_gap": 0.0
+        },
+        "Index.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 2.8361180887631e-07,
+            "axis_angle_deg": 21.09439608236609,
+            "knuckle_offset": 0.2644523764456011
+          },
+          "seg2": {
+            "rigid_residual": 7.592489838043571e-07,
+            "axis_angle_deg": 24.765039638750004,
+            "knuckle_offset": 0.3550594686626137
+          },
+          "joint_gap": 0.0
+        },
+        "Index.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 2.9200193199910854e-07,
+            "axis_angle_deg": 21.0943785872677,
+            "knuckle_offset": 0.26445211671991997
+          },
+          "seg2": {
+            "rigid_residual": 4.702727150338739e-07,
+            "axis_angle_deg": 24.76503397016809,
+            "knuckle_offset": 0.35505899980025446
+          },
+          "joint_gap": 0.0
+        },
+        "Middle.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.090868668659261e-07,
+            "axis_angle_deg": 19.132334869208623,
+            "knuckle_offset": 0.18949926443730977
+          },
+          "seg2": {
+            "rigid_residual": 4.3392836387637365e-07,
+            "axis_angle_deg": 19.692165386035885,
+            "knuckle_offset": 0.29093512439372515
+          },
+          "joint_gap": 0.0
+        },
+        "Middle.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 1.9082797281243946e-07,
+            "axis_angle_deg": 19.132349196400668,
+            "knuckle_offset": 0.18949944996525936
+          },
+          "seg2": {
+            "rigid_residual": 3.816559456248789e-07,
+            "axis_angle_deg": 19.692186289088855,
+            "knuckle_offset": 0.29093532486472795
+          },
+          "joint_gap": 0.0
+        },
+        "Ring.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.9454676001743416e-07,
+            "axis_angle_deg": 17.909439825947103,
+            "knuckle_offset": 0.2062602035209328
+          },
+          "seg2": {
+            "rigid_residual": 5.535535699429127e-07,
+            "axis_angle_deg": 16.087285672671726,
+            "knuckle_offset": 0.2543094423150796
+          },
+          "joint_gap": 0.0
+        },
+        "Ring.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 3.95372484964776e-07,
+            "axis_angle_deg": 17.90941154156724,
+            "knuckle_offset": 0.20626087784868008
+          },
+          "seg2": {
+            "rigid_residual": 2.7314279645418166e-07,
+            "axis_angle_deg": 16.0873341997203,
+            "knuckle_offset": 0.2543088866992895
+          },
+          "joint_gap": 0.0
+        },
+        "Pinky.R @+45 deg": {
+          "seg1": {
+            "rigid_residual": 3.749056346836425e-07,
+            "axis_angle_deg": 16.014850749739068,
+            "knuckle_offset": 0.28975317573185283
+          },
+          "seg2": {
+            "rigid_residual": 7.215917118074447e-07,
+            "axis_angle_deg": 10.723628631871517,
+            "knuckle_offset": 0.27733242394178825
+          },
+          "joint_gap": 0.0
+        },
+        "Pinky.R @-30 deg": {
+          "seg1": {
+            "rigid_residual": 5.826716064219818e-07,
+            "axis_angle_deg": 16.014879085153108,
+            "knuckle_offset": 0.2897535027757869
+          },
+          "seg2": {
+            "rigid_residual": 7.748603820800781e-07,
+            "axis_angle_deg": 10.723683692639979,
+            "knuckle_offset": 0.27733174192262866
+          },
+          "joint_gap": 0.0
+        }
+      },
+      "returned_to_neutral": true
+    },
+    "arm_ik_fk": {
+      "tests": {
+        "L": {
+          "fk_forearm_30deg_wrist_moved": 0.344141679425524,
+          "fk_forearm_shell_rigid_residual": 6.107658604359387e-07,
+          "ik_enabled_at_rest_wrist_drift": 3.621652119985919e-07,
+          "ik_target_moved_0.12": true,
+          "ik_wrist_to_target_distance": 3.453084893899103e-07,
+          "ik_wrist_moved": 0.11999992912089208
+        },
+        "R": {
+          "fk_forearm_30deg_wrist_moved": 0.344141679425524,
+          "fk_forearm_shell_rigid_residual": 6.107658604359387e-07,
+          "ik_enabled_at_rest_wrist_drift": 7.711043177333019e-07,
+          "ik_target_moved_0.12": true,
+          "ik_wrist_to_target_distance": 7.109353219249994e-07,
+          "ik_wrist_moved": 0.11999970017200423
+        }
+      },
+      "pass": true
+    },
+    "eye_aim": {
+      "L": {
+        "ctrl_moved_x": 0.1,
+        "GEO_CanonicalIris_moved": 0.0,
+        "legacy_Eye_Iris_moved": 0.00631999962287052,
+        "GEO_CanonicalIris_parent": "MCH_EyeAim.L"
+      },
+      "R": {
+        "ctrl_moved_x": 0.1,
+        "GEO_CanonicalIris_moved": 0.0,
+        "legacy_Eye_Iris_moved": 0.006320029555538443,
+        "GEO_CanonicalIris_parent": "MCH_EyeAim.R"
+      }
+    },
+    "eyelid_blink": {
+      "L": {
+        "scale_neutral": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "scale_blink_1": [
+          1.0,
+          1.0,
+          0.18
+        ],
+        "driver_responds": true,
+        "note": "Driver scales the eyelid control's local Z (inherited v14 semantics); see change log."
+      },
+      "R": {
+        "scale_neutral": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "scale_blink_1": [
+          1.0,
+          1.0,
+          0.18
+        ],
+        "driver_responds": true,
+        "note": "Driver scales the eyelid control's local Z (inherited v14 semantics); see change log."
+      }
+    },
+    "listening_ring_independence": {
+      "strengths": {
+        "listen_L=1,listen_R=0": {
+          "L": 7.2,
+          "R": 0.2
+        },
+        "listen_L=0,listen_R=1": {
+          "L": 0.2,
+          "R": 7.2
+        }
+      },
+      "independent": true,
+      "rings_use_own_material": {
+        "L": "MAT_Ava_AmberEmission_L",
+        "R": "MAT_Ava_AmberEmission_R"
+      }
+    },
+    "chest_light_control": {
+      "strength_at_0": 0.2,
+      "strength_at_1": 7.2,
+      "responds": true,
+      "emitter_objects": [
+        "GEO_ChestCore_C",
+        "GEO_ChestEmission_C"
+      ]
+    }
+  }
+}

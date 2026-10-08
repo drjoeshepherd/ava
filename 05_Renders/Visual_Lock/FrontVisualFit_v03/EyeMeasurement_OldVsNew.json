@@ -1,0 +1,449 @@
+{
+  "schema": "Ava_EyeMeasurement_OldVsNew",
+  "status": "PROPOSAL_COMPARISON (vNext not approved; v1.0 evaluator unchanged)",
+  "decision_2026_10_08": "Joe Shepherd: the v1.0 EyeCenterError is treated like the v1.0 EyeSizeError for FrontVisualFit_v03 - skin-dependent, reported only; the proposed IrisCenterError and EyeOpeningCenterError carry the gate.",
+  "v1_0": {
+    "FrontVisualFit_v02": {
+      "EyeCenterError": {
+        "value": 0.0021272036945646183,
+        "per_eye": {
+          "left": 0.002606139833915839,
+          "right": 0.0016482675552133975
+        },
+        "pass": true,
+        "rendered_boxes": [
+          [
+            233.5,
+            262.0
+          ],
+          [
+            360.0,
+            254.0
+          ]
+        ]
+      },
+      "EyeSizeError": {
+        "value": 0.01276105903442352,
+        "per_eye": {
+          "left": 0.014840299887028858,
+          "right": 0.010681818181818181
+        },
+        "pass": true,
+        "rendered_boxes": [
+          {
+            "xmin": 188,
+            "ymin": 210,
+            "xmax": 279,
+            "ymax": 314
+          },
+          {
+            "xmin": 316,
+            "ymin": 205,
+            "xmax": 404,
+            "ymax": 303
+          }
+        ]
+      },
+      "source": "05_Renders/Visual_Lock/FrontVisualFit_v02/Front_Metrics.json"
+    },
+    "FrontVisualFit_v03": {
+      "EyeCenterError": {
+        "value": 0.016504348284685614,
+        "per_eye": {
+          "left": 0.03136042901415783,
+          "right": 0.0016482675552133975
+        },
+        "pass": false,
+        "rendered_boxes": [
+          [
+            225.0,
+            251.0
+          ],
+          [
+            360.0,
+            253.0
+          ]
+        ]
+      },
+      "EyeSizeError": {
+        "value": 0.1482494024666922,
+        "per_eye": {
+          "left": 0.2858169867515662,
+          "right": 0.010681818181818181
+        },
+        "pass": false,
+        "rendered_boxes": [
+          {
+            "xmin": 189,
+            "ymin": 218,
+            "xmax": 261,
+            "ymax": 284
+          },
+          {
+            "xmin": 317,
+            "ymin": 203,
+            "xmax": 403,
+            "ymax": 303
+          }
+        ]
+      },
+      "source": "05_Renders/Visual_Lock/FrontVisualFit_v03/Front_Metrics.json"
+    }
+  },
+  "vNext": {
+    "tool_sha256": "A0F2034E3832864218E8A61894C0B6912018F1E9630D424EC86AFA24D723FF84",
+    "gate_file": {
+      "file": "Ava_Front_EyeAnatomy_Gates_vNext_PROPOSED.json",
+      "sha256": "73156FE18D0AAD7ACF0E82FBD32906F829D30FA12A1BCE73AEA396C59F935876"
+    },
+    "canonical_measurement": {
+      "image": "C:\\Users\\joesh\\OneDrive - Dr. Joe Shepherd\\6.Content\\Ava\\02_Production\\Visual_Lock\\Targets\\Ava_Target_Front.png",
+      "head_width_px": 429,
+      "head_height_px": 314,
+      "eyes": {
+        "left": {
+          "iris_amber_bbox": [
+            209,
+            240,
+            259,
+            282
+          ],
+          "iris_diameter_px": 51,
+          "iris_center_px": [
+            234.0,
+            257.0
+          ],
+          "pupil_center_px": [
+            234.95055970149255,
+            252.59701492537314
+          ],
+          "upper_lash_bbox": [
+            185,
+            218,
+            262,
+            257
+          ],
+          "opening_bbox": [
+            185,
+            218,
+            262,
+            282
+          ]
+        },
+        "right": {
+          "iris_amber_bbox": [
+            337,
+            236,
+            384,
+            271
+          ],
+          "iris_diameter_px": 48,
+          "iris_center_px": [
+            360.5,
+            247.5
+          ],
+          "pupil_center_px": [
+            357.99546827794563,
+            243.68126888217523
+          ],
+          "upper_lash_bbox": [
+            336,
+            202,
+            408,
+            248
+          ],
+          "opening_bbox": [
+            336,
+            202,
+            408,
+            271
+          ]
+        }
+      },
+      "old_eye_bounding_box": {
+        "left": {
+          "xmin": 189,
+          "ymin": 208,
+          "xmax": 279,
+          "ymax": 314
+        },
+        "right": {
+          "xmin": 317,
+          "ymin": 204,
+          "xmax": 404,
+          "ymax": 303
+        }
+      }
+    },
+    "FrontVisualFit_v02": {
+      "all_pass": false,
+      "results": {
+        "IrisCenterError": {
+          "per_eye": {
+            "left": 0.0,
+            "right": 0.0
+          },
+          "value": 0.0,
+          "threshold": 0.02,
+          "pass": true
+        },
+        "IrisDiameterError": {
+          "per_eye": {
+            "left": 0.0392156862745098,
+            "right": 0.041666666666666664
+          },
+          "value": 0.041666666666666664,
+          "threshold": 0.06,
+          "pass": true
+        },
+        "PupilCenterError": {
+          "per_eye": {
+            "left": 0.005125019755486641,
+            "right": 0.004768673801745713
+          },
+          "value": 0.005125019755486641,
+          "threshold": 0.03,
+          "pass": true
+        },
+        "UpperLashSpanError": {
+          "per_eye": {
+            "left": 0.07692307692307693,
+            "right": 0.0547945205479452
+          },
+          "value": 0.07692307692307693,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "UpperLashTopError": {
+          "per_eye": {
+            "left": 0.018648018648018648,
+            "right": 0.006993006993006993
+          },
+          "value": 0.018648018648018648,
+          "threshold": 0.02,
+          "pass": true
+        },
+        "EyeOpeningSizeError": {
+          "per_eye": {
+            "left": 0.1076923076923077,
+            "right": 0.041682974559686885
+          },
+          "value": 0.1076923076923077,
+          "threshold": 0.06,
+          "pass": false
+        },
+        "EyeOpeningCenterError": {
+          "per_eye": {
+            "left": 0.0203546027932086,
+            "right": 0.01922193764856718
+          },
+          "value": 0.0203546027932086,
+          "threshold": 0.02,
+          "pass": false
+        },
+        "IrisSymmetryError": {
+          "value": 0.002352941176470538,
+          "threshold": 0.05,
+          "pass": true,
+          "target_ratio": 1.0625,
+          "render_ratio": 1.06
+        }
+      },
+      "measurement": {
+        "left": {
+          "iris_amber_bbox": [
+            208,
+            227,
+            260,
+            283
+          ],
+          "iris_diameter_px": 53,
+          "iris_center_px": [
+            234.0,
+            257.0
+          ],
+          "pupil_center_px": [
+            232.939226519337,
+            251.70902394106815
+          ],
+          "upper_lash_bbox": [
+            190,
+            210,
+            273,
+            254
+          ],
+          "opening_bbox": [
+            190,
+            210,
+            273,
+            283
+          ]
+        },
+        "right": {
+          "iris_amber_bbox": [
+            336,
+            219,
+            385,
+            272
+          ],
+          "iris_diameter_px": 50,
+          "iris_center_px": [
+            360.5,
+            247.5
+          ],
+          "pupil_center_px": [
+            359.5632911392405,
+            242.36708860759492
+          ],
+          "upper_lash_bbox": [
+            326,
+            205,
+            402,
+            244
+          ],
+          "opening_bbox": [
+            326,
+            205,
+            402,
+            272
+          ]
+        }
+      }
+    },
+    "FrontVisualFit_v03": {
+      "all_pass": true,
+      "results": {
+        "IrisCenterError": {
+          "per_eye": {
+            "left": 0.002331002331002331,
+            "right": 0.003685638298564545
+          },
+          "value": 0.003685638298564545,
+          "threshold": 0.02,
+          "pass": true
+        },
+        "IrisDiameterError": {
+          "per_eye": {
+            "left": 0.0,
+            "right": 0.020833333333333332
+          },
+          "value": 0.020833333333333332,
+          "threshold": 0.06,
+          "pass": true
+        },
+        "PupilCenterError": {
+          "per_eye": {
+            "left": 0.004195082504084013,
+            "right": 0.011633685392435278
+          },
+          "value": 0.011633685392435278,
+          "threshold": 0.03,
+          "pass": true
+        },
+        "UpperLashSpanError": {
+          "per_eye": {
+            "left": 0.038461538461538464,
+            "right": 0.0410958904109589
+          },
+          "value": 0.0410958904109589,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "UpperLashTopError": {
+          "per_eye": {
+            "left": 0.0,
+            "right": 0.002331002331002331
+          },
+          "value": 0.002331002331002331,
+          "threshold": 0.02,
+          "pass": true
+        },
+        "EyeOpeningSizeError": {
+          "per_eye": {
+            "left": 0.026923076923076925,
+            "right": 0.02054794520547945
+          },
+          "value": 0.026923076923076925,
+          "threshold": 0.06,
+          "pass": true
+        },
+        "EyeOpeningCenterError": {
+          "per_eye": {
+            "left": 0.0016482675552133975,
+            "right": 0.002606139833915839
+          },
+          "value": 0.002606139833915839,
+          "threshold": 0.02,
+          "pass": true
+        },
+        "IrisSymmetryError": {
+          "value": 0.021276595744680757,
+          "threshold": 0.05,
+          "pass": true,
+          "target_ratio": 1.0625,
+          "render_ratio": 1.0851063829787233
+        }
+      },
+      "measurement": {
+        "left": {
+          "iris_amber_bbox": [
+            209,
+            229,
+            259,
+            283
+          ],
+          "iris_diameter_px": 51,
+          "iris_center_px": [
+            234.0,
+            258.0
+          ],
+          "pupil_center_px": [
+            233.16528925619835,
+            252.82438016528926
+          ],
+          "upper_lash_bbox": [
+            187,
+            218,
+            261,
+            252
+          ],
+          "opening_bbox": [
+            187,
+            218,
+            261,
+            283
+          ]
+        },
+        "right": {
+          "iris_amber_bbox": [
+            337,
+            214,
+            383,
+            272
+          ],
+          "iris_diameter_px": 47,
+          "iris_center_px": [
+            360.0,
+            249.0
+          ],
+          "pupil_center_px": [
+            358.3172690763052,
+            238.7008032128514
+          ],
+          "upper_lash_bbox": [
+            338,
+            203,
+            407,
+            243
+          ],
+          "opening_bbox": [
+            338,
+            203,
+            407,
+            272
+          ]
+        }
+      }
+    }
+  }
+}

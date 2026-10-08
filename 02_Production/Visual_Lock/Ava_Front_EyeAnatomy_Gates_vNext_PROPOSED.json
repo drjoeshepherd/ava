@@ -1,0 +1,24 @@
+{
+  "schema": "Ava_Front_EyeAnatomy_Gates",
+  "version": "vNext-0.1",
+  "status": "PROPOSED_NOT_APPROVED",
+  "proposed_by": "AVA-FIT-FRONT-03 (Claude Code)",
+  "proposed_on": "2026-10-08",
+  "authority": "02_Production/Tasks/AVA-FIT-FRONT-03.sign.md section 1; proposal text in 05_Renders/Visual_Lock/FrontVisualFit_v03/EyeMeasurement_vNext_SIGN.md",
+  "supersedes_if_approved": ["Ava_Front_Acceptance_Gates_v1.0.json blocking_gates.EyeSizeError"],
+  "does_not_change": ["Ava_Front_Acceptance_Gates_v1.0.json", "Ava_ValidateFront.py", "Ava_VisualLock_Common.py", "Ava_Geometry_Lock_v1.1.json", "Targets/*"],
+  "measurement_tool": "Tools/Ava_EyeAnatomy_vNext.py",
+  "target_source": "Measured from Targets/Ava_Target_Front.png by the same tool on every run (checksum-verified); no stored target numbers to drift.",
+  "normalization": "Centre errors are divided by the canonical head width (Geometry Lock head.max_width_row, 429 px), as in the approved EyeCenterError. Size errors are relative to the canonical value.",
+  "pass_rule": "Each per-eye gate passes when the worse eye is within threshold.",
+  "gates": {
+    "IrisCenterError": {"threshold": 0.02, "formula": "dist(render iris circle centre, canonical iris circle centre) / head_width", "rationale": "Same tolerance as the approved EyeCenterError."},
+    "IrisDiameterError": {"threshold": 0.06, "formula": "abs(render amber width - canonical amber width) / canonical amber width", "rationale": "About 3 px on a 50 px iris; the canonical raster edge is soft (upscaled), so +/-1.5 px per side."},
+    "PupilCenterError": {"threshold": 0.03, "formula": "dist(pupil centroids) / head_width", "rationale": "Pupil position carries gaze; looser than iris because the canonical pupil blends into the dark upper iris."},
+    "UpperLashSpanError": {"threshold": 0.10, "formula": "abs(render lash width - canonical lash width) / canonical lash width", "rationale": "Lash flick length is a stylistic detail; 10 % is about 8 px."},
+    "UpperLashTopError": {"threshold": 0.02, "formula": "abs(render lash top row - canonical lash top row) / head_width", "rationale": "Same tolerance as the approved EyeCenterError."},
+    "EyeOpeningSizeError": {"threshold": 0.06, "formula": "(abs(dw)/w + abs(dh)/h) / 2 over the lash-to-lower-lid opening box", "rationale": "Twice the approved EyeSize tolerance, because the opening box has soft lid edges instead of the skin-driven window."},
+    "EyeOpeningCenterError": {"threshold": 0.02, "formula": "dist(opening box centres) / head_width", "rationale": "Same tolerance as the approved EyeCenterError."},
+    "IrisSymmetryError": {"threshold": 0.05, "formula": "abs(render L/R iris-width ratio - canonical L/R ratio) / canonical ratio", "rationale": "Keeps the canonical slight left/right size difference (head turn) without demanding pixel parity."}
+  }
+}
