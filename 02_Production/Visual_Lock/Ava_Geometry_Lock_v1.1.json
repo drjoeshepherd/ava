@@ -1,0 +1,727 @@
+{
+  "schema": "Ava_Geometry_Lock_v1.1",
+  "status": "RASTER_DERIVED_REVIEW_REQUIRED",
+  "authority_hierarchy": [
+    "Ava_Target_Front.png",
+    "measurements derived mathematically from Ava_Target_Front.png",
+    "canon prose and approximate design descriptions",
+    "current Blender implementation"
+  ],
+  "source_image": {
+    "file": "Targets/Ava_Target_Front.png",
+    "dimensions_pixels": [
+      600,
+      800
+    ],
+    "sha256": "1C7953A27C24BCD830CE447DC69C76AC71391F39D02743793730952FFC8DDA69",
+    "modified": false
+  },
+  "coordinate_system": {
+    "pixel_origin": "top-left",
+    "pixel_x": "right",
+    "pixel_y": "down",
+    "normalized_origin": "character bottom on raster-derived centerline",
+    "normalized_x": "(pixel_x - centerline_pixel_x) / character_height_pixels",
+    "normalized_y": "(bottommost_character_pixel_y - pixel_y) / character_height_pixels",
+    "character_height": 1.0,
+    "centerline_x": 0.0
+  },
+  "proportion_rule": {
+    "canonical_head_body_ratio": {
+      "status": "measured",
+      "source": "Ava_Target_Front.png",
+      "pixel_value": 2.2356687898089174,
+      "normalized_value": 2.2356687898089174,
+      "derivation": "character_total_height_pixels / head_height_pixels."
+    },
+    "approximate_description": "~2.5 heads",
+    "acceptance_authority": "canonical_head_body_ratio"
+  },
+  "silhouette_mask": {
+    "file": "Targets/Ava_Target_Front_Mask.png",
+    "character_value": 255,
+    "background_value": 0,
+    "shadow_included": false,
+    "glow_included": false,
+    "soft_edge_policy": "binary after border-connected background segmentation",
+    "derivation": {
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "background_tolerance": 3,
+      "shadow_exclusion_bottom_row": 739,
+      "shadow_onset_row": 708,
+      "sole_peak_row": 731,
+      "sole_supported_x_ranges": [
+        [
+          157,
+          277
+        ],
+        [
+          301,
+          420
+        ]
+      ],
+      "bounds_inclusive": [
+        70,
+        38,
+        529,
+        739
+      ],
+      "foreground_pixel_count": 219580,
+      "derivation": "Border-connected background flood fill; floor contact derived from the last row with at least eight pixels below luminance 140; broad lower-row shadow pixels outside the two peak-sole support ranges removed; components below 18 pixels discarded."
+    }
+  },
+  "landmarks": {
+    "character": {
+      "topmost_visible_pixel": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          299.5,
+          38
+        ],
+        "normalized_value": [
+          0.0,
+          0.9985754985754985
+        ],
+        "derivation": "Minimum y in canonical silhouette mask."
+      },
+      "bottommost_visible_pixel": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          299.5,
+          739
+        ],
+        "normalized_value": [
+          0.0,
+          0.0
+        ],
+        "derivation": "Maximum y in shadow-free canonical silhouette mask."
+      },
+      "centerline": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 299.5,
+        "normalized_value": 0.0,
+        "derivation": "Midpoint of the inclusive leftmost and rightmost canonical silhouette pixels."
+      },
+      "bounding_box": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": {
+          "xmin": 70,
+          "ymin": 38,
+          "xmax": 529,
+          "ymax": 739
+        },
+        "normalized_value": {
+          "xmin": -0.3269230769230769,
+          "xmax": 0.3269230769230769,
+          "ymin": 0.0,
+          "ymax": 1.0
+        },
+        "derivation": "Inclusive bounds of the shadow-free canonical silhouette mask."
+      },
+      "total_height": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 702,
+        "normalized_value": 1.0,
+        "derivation": "bottommost_y - topmost_y + 1."
+      }
+    },
+    "head": {
+      "top": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          299.5,
+          38
+        ],
+        "normalized_value": [
+          0.0,
+          0.9985754985754985
+        ],
+        "derivation": "Top row of the upper silhouette component."
+      },
+      "bottom": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          299.5,
+          351
+        ],
+        "normalized_value": [
+          0.0,
+          0.5527065527065527
+        ],
+        "derivation": "Strongest upper-half silhouette-width contraction, derived from an 7-row smoothed row-width profile."
+      },
+      "leftmost": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          70,
+          199
+        ],
+        "normalized_value": [
+          -0.3269230769230769,
+          0.7692307692307693
+        ],
+        "derivation": "Minimum x within the raster-derived head region."
+      },
+      "rightmost": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          498,
+          250
+        ],
+        "normalized_value": [
+          0.2827635327635328,
+          0.6965811965811965
+        ],
+        "derivation": "Maximum x within the raster-derived head region."
+      },
+      "max_width_row": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": {
+          "row": 260,
+          "left": 70,
+          "right": 498,
+          "width": 429
+        },
+        "normalized_value": {
+          "row_y": 0.6823361823361823,
+          "width": 0.6111111111111112
+        },
+        "derivation": "Maximum inclusive silhouette width within the raster-derived head region."
+      },
+      "height": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 314,
+        "normalized_value": 0.4472934472934473,
+        "derivation": "head_bottom - head_top + 1."
+      },
+      "canonical_heads_tall": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 2.2356687898089174,
+        "normalized_value": 2.2356687898089174,
+        "derivation": "character_total_height_pixels / head_height_pixels."
+      },
+      "chin": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          333.0,
+          351
+        ],
+        "normalized_value": [
+          0.04772079772079772,
+          0.5527065527065527
+        ],
+        "derivation": "Bottommost pixel of the largest warm face-color component inside the central head region."
+      },
+      "cheek_left": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          179,
+          251
+        ],
+        "normalized_value": [
+          -0.17165242165242164,
+          0.6951566951566952
+        ],
+        "derivation": "Left extent on the widest lower-half row of the warm face-color component."
+      },
+      "cheek_right": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          428,
+          251
+        ],
+        "normalized_value": [
+          0.18304843304843305,
+          0.6951566951566952
+        ],
+        "derivation": "Right extent on the widest lower-half row of the warm face-color component."
+      }
+    },
+    "eyes": {
+      "left": {
+        "eye_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            234.0,
+            261.0
+          ],
+          "normalized_value": [
+            -0.0933048433048433,
+            0.6809116809116809
+          ],
+          "derivation": "Center of the local eye-feature bounding box surrounding the detected amber iris."
+        },
+        "eye_bounding_box": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "xmin": 189,
+            "ymin": 208,
+            "xmax": 279,
+            "ymax": 314
+          },
+          "normalized_value": {
+            "xmin": -0.1574074074074074,
+            "xmax": -0.0292022792022792,
+            "ymin": 0.6054131054131054,
+            "ymax": 0.7564102564102564
+          },
+          "derivation": "Bounds of dark or strongly chromatic eye-feature pixels within the iris-local window."
+        },
+        "iris_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            233.59097320169252,
+            267.5923836389281
+          ],
+          "normalized_value": [
+            -0.09388750256169157,
+            0.6715208210271679
+          ],
+          "derivation": "Centroid of the connected amber iris component."
+        },
+        "iris_diameter": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "width": 51,
+            "height": 43,
+            "equivalent": 47.0
+          },
+          "normalized_value": {
+            "width": 0.07264957264957266,
+            "height": 0.06125356125356125,
+            "equivalent": 0.06695156695156695
+          },
+          "derivation": "Inclusive amber-component width and height; equivalent diameter is their arithmetic mean."
+        },
+        "pupil_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            234.95055970149255,
+            252.59701492537314
+          ],
+          "normalized_value": [
+            -0.09195076965599351,
+            0.692881745120551
+          ],
+          "derivation": "Centroid of pixels with luminance below 70 inside the detected iris bounding box."
+        }
+      },
+      "right": {
+        "eye_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            360.5,
+            253.5
+          ],
+          "normalized_value": [
+            0.0868945868945869,
+            0.6915954415954416
+          ],
+          "derivation": "Center of the local eye-feature bounding box surrounding the detected amber iris."
+        },
+        "eye_bounding_box": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "xmin": 317,
+            "ymin": 204,
+            "xmax": 404,
+            "ymax": 303
+          },
+          "normalized_value": {
+            "xmin": 0.02492877492877493,
+            "xmax": 0.14886039886039887,
+            "ymin": 0.6210826210826211,
+            "ymax": 0.7621082621082621
+          },
+          "derivation": "Bounds of dark or strongly chromatic eye-feature pixels within the iris-local window."
+        },
+        "iris_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            362.2562814070352,
+            257.25125628140705
+          ],
+          "normalized_value": [
+            0.0893964122607339,
+            0.6862517716789074
+          ],
+          "derivation": "Centroid of the connected amber iris component."
+        },
+        "iris_diameter": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "width": 48,
+            "height": 36,
+            "equivalent": 42.0
+          },
+          "normalized_value": {
+            "width": 0.06837606837606838,
+            "height": 0.05128205128205128,
+            "equivalent": 0.05982905982905983
+          },
+          "derivation": "Inclusive amber-component width and height; equivalent diameter is their arithmetic mean."
+        },
+        "pupil_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            357.99546827794563,
+            243.68126888217523
+          ],
+          "normalized_value": [
+            0.08332687788881145,
+            0.7055822380595794
+          ],
+          "derivation": "Centroid of pixels with luminance below 70 inside the detected iris bounding box."
+        }
+      }
+    },
+    "face": {
+      "mouth_center": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          296.78905053598777,
+          339.322741194487
+        ],
+        "normalized_value": [
+          -0.0038617513732367957,
+          0.5693408245092778
+        ],
+        "derivation": "Centroid of the widest connected dark component below the eye band in the central face region."
+      },
+      "mouth_extents": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": {
+          "left": 209,
+          "right": 390,
+          "row_range": [
+            312,
+            351
+          ]
+        },
+        "normalized_value": {
+          "left": -0.12891737891737892,
+          "right": 0.12891737891737892
+        },
+        "derivation": "Horizontal bounds of the detected mouth component."
+      },
+      "nose_center": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          296.4937906564163,
+          306.9178001182732
+        ],
+        "normalized_value": [
+          -0.004282349492284461,
+          0.6155017092332291
+        ],
+        "derivation": "Centroid of the largest warm chromatic component between the eye and mouth bands."
+      },
+      "brow_landmarks": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Hair, brow, and eyelash tones overlap in the raster; individual brow endpoints cannot be isolated without human annotation.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      }
+    },
+    "hair": {
+      "outer_extents": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": {
+          "left": 70,
+          "top": 38,
+          "right": 498,
+          "bottom": 351
+        },
+        "normalized_value": {
+          "left": -0.3269230769230769,
+          "right": 0.2827635327635328,
+          "top": 0.9985754985754985,
+          "bottom": 0.5527065527065527
+        },
+        "derivation": "Bounds of connected light neutral/silver pixels inside the raster-derived head region."
+      },
+      "lower_bob_boundary": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 351,
+        "normalized_value": 0.5527065527065527,
+        "derivation": "Maximum y of the detected silver-hair pixel set."
+      },
+      "top_silhouette": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 38,
+        "normalized_value": 0.9985754985754985,
+        "derivation": "Minimum y of the detected silver-hair pixel set."
+      },
+      "side_silhouette_landmarks": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "The white hair edge and white background merge at several anti-aliased locations; exact side landmark correspondence requires human annotation.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center.",
+        "observed_visible_region": {
+          "hair_bbox": [
+            70,
+            38,
+            498,
+            351
+          ]
+        }
+      }
+    },
+    "listening_modules": {
+      "left": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "The left listening module is partially occluded by hair; its full circle, center, and diameters are not directly visible.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "right": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "The right listening module is partially occluded by hair; its full circle, center, and diameters are not directly visible.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      }
+    },
+    "torso": {
+      "shoulder_centers": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Shoulder joint centers are partially occluded by shell overlaps.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "widest_points": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Torso and upper-arm white shells touch in the raster, preventing an unambiguous torso-only width.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "chest_light": {
+        "center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            298.05325443786984,
+            405.5739644970414
+          ],
+          "normalized_value": [
+            -0.0020608911141455286,
+            0.4749658625398271
+          ],
+          "derivation": "Centroid of the largest central amber component below the head."
+        },
+        "visible_bbox": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "xmin": 281,
+            "ymin": 388,
+            "xmax": 315,
+            "ymax": 424
+          },
+          "normalized_value": {
+            "xmin": -0.026353276353276354,
+            "xmax": 0.02207977207977208,
+            "ymin": 0.44871794871794873,
+            "ymax": 0.5
+          },
+          "derivation": "Bounds of the connected central amber chest-light component."
+        }
+      },
+      "waist_extents": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "White torso, graphite waist, and thigh shells overlap without a single unambiguous raster boundary.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "pelvis_extents": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Pelvis shell boundaries are occluded by graphite waist and thigh shells.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      }
+    },
+    "arms_hands": {
+      "shoulder": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Shoulder centers require human joint annotation.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "elbow": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Elbow centers require human joint annotation.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "wrist": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Wrist centers require human joint annotation.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "hand_bounding_boxes": {
+        "left": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "xmin": 70,
+            "ymin": 505,
+            "xmax": 138,
+            "ymax": 584
+          },
+          "normalized_value": {
+            "xmin": -0.3269230769230769,
+            "xmax": -0.23005698005698005,
+            "ymin": 0.2207977207977208,
+            "ymax": 0.3333333333333333
+          },
+          "derivation": "Bounds of the outermost connected dark hand component on the image-left side."
+        },
+        "right": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "xmin": 446,
+            "ymin": 505,
+            "xmax": 518,
+            "ymax": 582
+          },
+          "normalized_value": {
+            "xmin": 0.20868945868945868,
+            "xmax": 0.31125356125356124,
+            "ymin": 0.22364672364672364,
+            "ymax": 0.3333333333333333
+          },
+          "derivation": "Bounds of the outermost connected dark hand component on the image-right side."
+        }
+      }
+    },
+    "legs_feet": {
+      "hip": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Hip centers are occluded by pelvis and thigh shells.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "knee": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Knee centers are occluded by overlapping shell and joint pixels.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "ankle": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Ankle centers are occluded by shin and foot shell overlap.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "thigh_width": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "The thigh/pelvis boundary is not unambiguous in the raster.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "lower_leg_width": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "The knee/shin boundary is not unambiguous in the raster.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "foot_bounding_boxes": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "The foot/shin boundary and floor contact contain anti-aliased overlap; human annotation is required.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      }
+    }
+  },
+  "manual_review_required": [
+    "face.brow_landmarks",
+    "hair.side_silhouette_landmarks",
+    "listening_modules.left center/outer diameter/inner diameter",
+    "listening_modules.right center/outer diameter/inner diameter",
+    "torso.shoulder_centers/widest_points/waist_extents/pelvis_extents",
+    "arms_hands.shoulder/elbow/wrist",
+    "legs_feet.hip/knee/ankle/thigh_width/lower_leg_width/foot_bounding_boxes"
+  ],
+  "metric_definitions": {
+    "HeadBodyRatioError": "abs(render_heads_tall - target_heads_tall) / target_heads_tall",
+    "EyeCenterError": "Euclidean pixel-center distance / target head maximum width",
+    "EyeSizeError": "mean(abs(render_eye_width-target_eye_width)/target_eye_width, abs(render_eye_height-target_eye_height)/target_eye_height)",
+    "ListeningModuleCenterError": "Euclidean pixel-center distance / target head maximum width; not evaluated until manual module annotation exists",
+    "ListeningModuleDiameterError": "abs(render_diameter-target_diameter)/target_diameter; not evaluated until manual module annotation exists",
+    "TorsoWidthError": "abs(render_width-target_width)/character_height; not evaluated until manual torso annotation exists",
+    "HandScaleError": "mean absolute relative error of target/render hand bbox width and height",
+    "ThighWidthError": "abs(render_width-target_width)/character_height; not evaluated until manual thigh annotation exists",
+    "FootWidthError": "abs(render_width-target_width)/character_height; not evaluated until manual foot annotation exists",
+    "SilhouetteIoU": "intersection(TargetMask, RenderMask) / union(TargetMask, RenderMask)"
+  }
+}

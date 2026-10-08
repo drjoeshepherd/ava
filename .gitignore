@@ -1,0 +1,21 @@
+﻿# OS / editor
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*~
+
+# Blender transient files
+*.blend1
+*.blend2
+*.blend@
+*.blend.lock
+
+# Python
+__pycache__/
+*.pyc
+
+# Render scratch / cache
+cache/
+tmp/
+.temp/

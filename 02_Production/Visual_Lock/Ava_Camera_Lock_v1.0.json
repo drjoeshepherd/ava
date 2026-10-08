@@ -1,0 +1,91 @@
+{
+  "schema": "Ava_Camera_Lock_v1.0",
+  "status": "LOCKED",
+  "resolution": [
+    600,
+    800
+  ],
+  "character_frame_fraction": 0.925,
+  "cameras": {
+    "Front": {
+      "object": "CAM_CANON_FRONT",
+      "projection": "ORTHOGRAPHIC",
+      "location": [
+        0,
+        -15,
+        3.387494
+      ],
+      "rotation_euler": [
+        1.57079649,
+        -0.0,
+        0.0
+      ],
+      "ortho_scale": 7.367555,
+      "target": [
+        0,
+        0,
+        3.387494
+      ]
+    },
+    "ThreeQuarter": {
+      "object": "CAM_CANON_3Q",
+      "projection": "ORTHOGRAPHIC",
+      "location": [
+        10.607,
+        -10.607,
+        3.387494
+      ],
+      "rotation_euler": [
+        1.57079637,
+        -8e-08,
+        0.78539819
+      ],
+      "ortho_scale": 7.367555,
+      "target": [
+        0,
+        0,
+        3.387494
+      ]
+    },
+    "Side": {
+      "object": "CAM_CANON_SIDE",
+      "projection": "ORTHOGRAPHIC",
+      "location": [
+        15,
+        0,
+        3.387494
+      ],
+      "rotation_euler": [
+        1.57079637,
+        -0.0,
+        1.57079637
+      ],
+      "ortho_scale": 7.367555,
+      "target": [
+        0,
+        0,
+        3.387494
+      ]
+    },
+    "Back": {
+      "object": "CAM_CANON_BACK",
+      "projection": "ORTHOGRAPHIC",
+      "location": [
+        0,
+        15,
+        3.387494
+      ],
+      "rotation_euler": [
+        -1.57079625,
+        3.1415925,
+        -0.0
+      ],
+      "ortho_scale": 7.367555,
+      "target": [
+        0,
+        0,
+        3.387494
+      ]
+    }
+  }
+}

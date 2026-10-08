@@ -1,0 +1,28 @@
+{
+  "schema": "Ava_Target_Manifest_v1.0",
+  "status": "IMMUTABLE",
+  "hash_algorithm": "SHA-256",
+  "authoritative_source": {
+    "file": "Ava v1.0 — Canonical Character Construction Sheet.png",
+    "sha256": "37FADB57733011984706FC2F163290E81DF48A34F6EEA800461704387EABB5DF"
+  },
+  "targets": {
+    "Front": {
+      "file": "Targets/Ava_Target_Front.png",
+      "sha256": "1C7953A27C24BCD830CE447DC69C76AC71391F39D02743793730952FFC8DDA69"
+    },
+    "ThreeQuarter": {
+      "file": "Targets/Ava_Target_ThreeQuarter.png",
+      "sha256": "590757CFE33C4AE31A651CDCE66C9ABF73A54EC8F212A1ADA838BADA551F4DC9"
+    },
+    "Side": {
+      "file": "Targets/Ava_Target_Side.png",
+      "sha256": "C67B21C42641C58B6B62636BF03CFEFD999762984017623AE44048A1A32AD448"
+    },
+    "Back": {
+      "file": "Targets/Ava_Target_Back.png",
+      "sha256": "EBFD7B4A617C4476F5CD34BED6C1ABC05C717FFDE3F2CB3D49E84EA553C4385D"
+    }
+  },
+  "policy": "A changed checksum invalidates the visual-lock baseline and requires explicit review."
+}

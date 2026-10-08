@@ -1,0 +1,80 @@
+{
+  "schema": "Ava_Material_Lock_v1.0",
+  "status": "LOCKED_NUMERIC_TARGETS",
+  "color_space": "Blender scene-linear RGB unless otherwise noted",
+  "white_shell": {
+    "base_rgb": [
+      0.86,
+      0.85,
+      0.82
+    ],
+    "metallic": 0.015,
+    "roughness": 0.48,
+    "specular_ior_level": 0.35,
+    "description": "warm matte-to-soft-satin ceramic/polymer"
+  },
+  "graphite": {
+    "base_rgb": [
+      0.025,
+      0.03,
+      0.036
+    ],
+    "metallic": 0.38,
+    "roughness": 0.36,
+    "specular_ior_level": 0.38,
+    "description": "restrained satin structural finish"
+  },
+  "accent_gray": {
+    "base_rgb": [
+      0.23,
+      0.245,
+      0.265
+    ],
+    "metallic": 0.22,
+    "roughness": 0.42,
+    "role": "support only"
+  },
+  "amber_emission": {
+    "rgb_linear": [
+      1.0,
+      0.43,
+      0.008
+    ],
+    "hsv_linear": [
+      0.070901,
+      0.992,
+      1.0
+    ],
+    "hue_lock": "constant for every state; pink, peach, and orange-red prohibited",
+    "default_strength": 1.0,
+    "states": {
+      "Idle": 0.55,
+      "Listening": 2.2,
+      "Curious": 1.65,
+      "Thinking": 1.05,
+      "Connection": 1.55,
+      "Discovery": 2.4,
+      "Delight": 2.0,
+      "Concern": 0.42,
+      "Focus": 1.25
+    },
+    "allowed_variation": [
+      "intensity",
+      "location",
+      "rhythm",
+      "motion"
+    ],
+    "forbidden_variation": [
+      "hue",
+      "multicolor",
+      "RGB state changes"
+    ]
+  },
+  "render_evaluation": {
+    "view_transform": "AgX",
+    "look": "None/neutral",
+    "bloom": false,
+    "depth_of_field": false,
+    "cinematic_grading": false
+  }
+}

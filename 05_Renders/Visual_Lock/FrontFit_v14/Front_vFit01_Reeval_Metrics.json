@@ -1,0 +1,244 @@
+{
+  "schema": "Ava_Front_vFit01_Reevaluation_v1.1",
+  "status": "REVIEW_REQUIRED",
+  "geometry_lock": "Ava_Geometry_Lock_v1.1.json",
+  "target_mask": "Ava_Target_Front_Mask.png",
+  "render_mask": "Front_vFit01_Reeval_RenderMask.png",
+  "metrics": {
+    "HeadBodyRatioError": {
+      "status": "calculated",
+      "formula": "abs(render-target)/target",
+      "target_measurement": 2.2356687898089174,
+      "rendered_measurement": 2.2356687898089174,
+      "error": 0.0,
+      "threshold": 0.02,
+      "pass": true
+    },
+    "EyeCenterError": {
+      "status": "calculated",
+      "formula": "mean Euclidean eye-center distance / target head width",
+      "target_measurement": [
+        [
+          234.0,
+          261.0
+        ],
+        [
+          360.5,
+          253.5
+        ]
+      ],
+      "rendered_measurement": [
+        [
+          233.0,
+          261.5
+        ],
+        [
+          360.5,
+          253.5
+        ]
+      ],
+      "error": 0.0013030699169579195,
+      "threshold": 0.02,
+      "pass": true
+    },
+    "EyeSizeError": {
+      "status": "calculated",
+      "formula": "mean relative bbox width/height error",
+      "target_measurement": [
+        {
+          "xmin": 189,
+          "ymin": 208,
+          "xmax": 279,
+          "ymax": 314
+        },
+        {
+          "xmin": 317,
+          "ymin": 204,
+          "xmax": 404,
+          "ymax": 303
+        }
+      ],
+      "rendered_measurement": [
+        {
+          "xmin": 189,
+          "ymin": 209,
+          "xmax": 277,
+          "ymax": 314
+        },
+        {
+          "xmin": 317,
+          "ymin": 204,
+          "xmax": 404,
+          "ymax": 303
+        }
+      ],
+      "error": 0.007830954092636335,
+      "threshold": 0.03,
+      "pass": true
+    },
+    "ListeningModuleCenterError": {
+      "status": "manual_review_required",
+      "formula": "Euclidean module-center distance / target head width",
+      "target_measurement": null,
+      "rendered_measurement": null,
+      "error": null,
+      "threshold": 0.03,
+      "note": "Full target circles are occluded by hair."
+    },
+    "ListeningModuleDiameterError": {
+      "status": "manual_review_required",
+      "formula": "abs(render-target)/target",
+      "target_measurement": null,
+      "rendered_measurement": null,
+      "error": null,
+      "threshold": 0.03,
+      "note": "Full target outer diameters are occluded by hair."
+    },
+    "TorsoWidthError": {
+      "status": "manual_review_required",
+      "formula": "abs(render-target)/character_height",
+      "target_measurement": null,
+      "rendered_measurement": null,
+      "error": null,
+      "threshold": 0.03,
+      "note": "Target torso and arm shells touch."
+    },
+    "HandScaleError": {
+      "status": "calculated",
+      "formula": "mean relative hand-bbox width/height error",
+      "target_measurement": [
+        {
+          "xmin": 70,
+          "ymin": 505,
+          "xmax": 138,
+          "ymax": 584
+        },
+        {
+          "xmin": 446,
+          "ymin": 505,
+          "xmax": 518,
+          "ymax": 582
+        }
+      ],
+      "rendered_measurement": [
+        {
+          "xmin": 70,
+          "ymin": 505,
+          "xmax": 138,
+          "ymax": 584
+        },
+        {
+          "xmin": 437,
+          "ymin": 504,
+          "xmax": 518,
+          "ymax": 582
+        }
+      ],
+      "error": 0.034027046013347384,
+      "threshold": 0.03,
+      "pass": false
+    },
+    "ThighWidthError": {
+      "status": "manual_review_required",
+      "formula": "abs(render-target)/character_height",
+      "target_measurement": null,
+      "rendered_measurement": null,
+      "error": null,
+      "threshold": 0.03,
+      "note": "Target thigh/pelvis boundary is occluded."
+    },
+    "FootWidthError": {
+      "status": "manual_review_required",
+      "formula": "abs(render-target)/character_height",
+      "target_measurement": null,
+      "rendered_measurement": null,
+      "error": null,
+      "threshold": 0.03,
+      "note": "Target foot/shin boundary requires human annotation."
+    },
+    "SilhouetteIoU": {
+      "status": "calculated",
+      "formula": "intersection(TargetMask,RenderMask)/union(TargetMask,RenderMask)",
+      "target_measurement": 219580,
+      "rendered_measurement": 221735,
+      "error": 0.9115882579711777,
+      "threshold": 0.9,
+      "pass": true
+    }
+  },
+  "target_segmentation": {
+    "background_rgb": [
+      255,
+      255,
+      255
+    ],
+    "background_tolerance": 3,
+    "shadow_exclusion_bottom_row": 739,
+    "shadow_onset_row": 708,
+    "sole_peak_row": 731,
+    "sole_supported_x_ranges": [
+      [
+        157,
+        277
+      ],
+      [
+        301,
+        420
+      ]
+    ],
+    "bounds_inclusive": [
+      70,
+      38,
+      529,
+      739
+    ],
+    "foreground_pixel_count": 219580,
+    "derivation": "Border-connected background flood fill; floor contact derived from the last row with at least eight pixels below luminance 140; broad lower-row shadow pixels outside the two peak-sole support ranges removed; components below 18 pixels discarded."
+  },
+  "render_segmentation": {
+    "background_rgb": [
+      189,
+      189,
+      189
+    ],
+    "background_tolerance": 3,
+    "shadow_exclusion_bottom_row": 738,
+    "shadow_onset_row": 731,
+    "sole_peak_row": 733,
+    "sole_supported_x_ranges": [
+      [
+        157,
+        275
+      ],
+      [
+        302,
+        420
+      ]
+    ],
+    "bounds_inclusive": [
+      69,
+      37,
+      519,
+      738
+    ],
+    "foreground_pixel_count": 221735,
+    "derivation": "Border-connected background flood fill; floor contact derived from the last row with at least eight pixels below luminance 140; broad lower-row shadow pixels outside the two peak-sole support ranges removed; components below 18 pixels discarded."
+  },
+  "manual_review_required": [
+    "face.brow_landmarks",
+    "hair.side_silhouette_landmarks",
+    "listening_modules.left center/outer diameter/inner diameter",
+    "listening_modules.right center/outer diameter/inner diameter",
+    "torso.shoulder_centers/widest_points/waist_extents/pelvis_extents",
+    "arms_hands.shoulder/elbow/wrist",
+    "legs_feet.hip/knee/ankle/thigh_width/lower_leg_width/foot_bounding_boxes"
+  ],
+  "lock_integrity": {
+    "target_sha256_before": "1C7953A27C24BCD830CE447DC69C76AC71391F39D02743793730952FFC8DDA69",
+    "target_sha256_after": "1C7953A27C24BCD830CE447DC69C76AC71391F39D02743793730952FFC8DDA69",
+    "target_unchanged": true
+  },
+  "geometry_modified": false,
+  "rig_modified": false,
+  "animation_modified": false
+}
