@@ -1,0 +1,902 @@
+{
+  "schema": "Ava_Front_Validation_v1.0",
+  "status": "VERIFIED_MEASUREMENT_REVIEW_REQUIRED",
+  "label": "FrontVisualFit_v02",
+  "provenance": {
+    "source_blend": "02_Production/Visual_Lock/FrontVisualFit_v02/Ava_v1.0_FrontVisualFit_v02.blend",
+    "source_blend_sha256_before": "E9886775D75A5A66EEB771E3D1AFBDFD5DBC09F062A4BD48E39FA3378AC03957",
+    "source_blend_sha256_after": "E9886775D75A5A66EEB771E3D1AFBDFD5DBC09F062A4BD48E39FA3378AC03957",
+    "self_test_image": null,
+    "canonical_raster": {
+      "file": "02_Production/Visual_Lock/Targets/Ava_Target_Front.png",
+      "sha256": "1C7953A27C24BCD830CE447DC69C76AC71391F39D02743793730952FFC8DDA69"
+    },
+    "canonical_mask": {
+      "file": "02_Production/Visual_Lock/Targets/Ava_Target_Front_Mask.png",
+      "sha256": "0232CE4979A936501E8E203D829010AC82368495EF426A4551912374F2813E95"
+    },
+    "manifest_check": {
+      "manifest": "02_Production/Visual_Lock/Ava_Target_Manifest_v1.0.json",
+      "entries": {
+        "authoritative_source": {
+          "file": "Ava v1.0 \u2014 Canonical Character Construction Sheet.png",
+          "expected": "37FADB57733011984706FC2F163290E81DF48A34F6EEA800461704387EABB5DF",
+          "actual": "37FADB57733011984706FC2F163290E81DF48A34F6EEA800461704387EABB5DF",
+          "match": true
+        },
+        "Front": {
+          "file": "02_Production/Visual_Lock/Targets/Ava_Target_Front.png",
+          "expected": "1C7953A27C24BCD830CE447DC69C76AC71391F39D02743793730952FFC8DDA69",
+          "actual": "1C7953A27C24BCD830CE447DC69C76AC71391F39D02743793730952FFC8DDA69",
+          "match": true
+        },
+        "ThreeQuarter": {
+          "file": "02_Production/Visual_Lock/Targets/Ava_Target_ThreeQuarter.png",
+          "expected": "590757CFE33C4AE31A651CDCE66C9ABF73A54EC8F212A1ADA838BADA551F4DC9",
+          "actual": "590757CFE33C4AE31A651CDCE66C9ABF73A54EC8F212A1ADA838BADA551F4DC9",
+          "match": true
+        },
+        "Side": {
+          "file": "02_Production/Visual_Lock/Targets/Ava_Target_Side.png",
+          "expected": "C67B21C42641C58B6B62636BF03CFEFD999762984017623AE44048A1A32AD448",
+          "actual": "C67B21C42641C58B6B62636BF03CFEFD999762984017623AE44048A1A32AD448",
+          "match": true
+        },
+        "Back": {
+          "file": "02_Production/Visual_Lock/Targets/Ava_Target_Back.png",
+          "expected": "EBFD7B4A617C4476F5CD34BED6C1ABC05C717FFDE3F2CB3D49E84EA553C4385D",
+          "actual": "EBFD7B4A617C4476F5CD34BED6C1ABC05C717FFDE3F2CB3D49E84EA553C4385D",
+          "match": true
+        },
+        "FrontMask": {
+          "file": "02_Production/Visual_Lock/Targets/Ava_Target_Front_Mask.png",
+          "expected": "0232CE4979A936501E8E203D829010AC82368495EF426A4551912374F2813E95",
+          "actual": "0232CE4979A936501E8E203D829010AC82368495EF426A4551912374F2813E95",
+          "match": true
+        }
+      },
+      "all_match": true
+    },
+    "geometry_lock": {
+      "file": "02_Production/Visual_Lock/Ava_Geometry_Lock_v1.1.json",
+      "schema": "Ava_Geometry_Lock_v1.1",
+      "status": "APPROVED",
+      "sha256": "8B48231378AD128F73512DA21D073634F8BFBD935D96F91DC4562560C28D0FC5"
+    },
+    "gate_file": {
+      "file": "02_Production/Visual_Lock/Ava_Front_Acceptance_Gates_v1.0.json",
+      "version": "1.0",
+      "sha256": "3F7C21D7C82D87F507A6AF6565610C166B717CE89655D063BC50754ACD02883D"
+    },
+    "camera": "CAM_CANON_FRONT",
+    "render_resolution": [
+      600,
+      800
+    ],
+    "render_timestamp_utc": "2026-10-08T21:32:38.302797+00:00",
+    "validation_started_utc": "2026-10-08T21:32:31.818699+00:00",
+    "blender_executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+    "blender_info": {
+      "blender_version": "5.2.2 LTS",
+      "blend_filepath": "C:\\Users\\joesh\\OneDrive - Dr. Joe Shepherd\\6.Content\\Ava\\02_Production\\Visual_Lock\\FrontVisualFit_v02\\Ava_v1.0_FrontVisualFit_v02.blend",
+      "scene": "Scene",
+      "errors": [],
+      "warnings": [],
+      "in_memory_overrides": {
+        "scene.camera": "CAM_CANON_FRONT",
+        "resolution": [
+          600,
+          800
+        ],
+        "resolution_percentage": 100,
+        "file_format": "PNG RGB 8-bit"
+      },
+      "camera": {
+        "name": "CAM_CANON_FRONT",
+        "location": [
+          0.0,
+          -15.0,
+          3.3874943256378174
+        ],
+        "rotation_euler": [
+          1.5707964897155762,
+          -0.0,
+          0.0
+        ],
+        "projection": "ORTHO",
+        "ortho_scale": 7.367555141448975,
+        "use_dof": false,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -1.6292068494294654e-07,
+            -1.0,
+            -15.0
+          ],
+          [
+            0.0,
+            1.0,
+            -1.6292068494294654e-07,
+            3.3874943256378174
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "camera_lock_checks": {
+        "location": true,
+        "rotation_euler": true,
+        "projection": true,
+        "ortho_scale": true,
+        "no_dof": true
+      },
+      "render_settings_in_file": {
+        "engine": "BLENDER_EEVEE",
+        "resolution_x": 600,
+        "resolution_y": 800,
+        "resolution_percentage": 100,
+        "film_transparent": false,
+        "view_transform": "AgX",
+        "look": "None",
+        "active_camera": "CAM_CANON_FRONT"
+      },
+      "lights": [
+        {
+          "name": "LIGHT_FILL",
+          "light_type": "AREA",
+          "energy": 480.0,
+          "hide_render": false,
+          "in_scene": true
+        },
+        {
+          "name": "LIGHT_KEY",
+          "light_type": "AREA",
+          "energy": 800.0,
+          "hide_render": false,
+          "in_scene": true
+        },
+        {
+          "name": "LIGHT_ReviewFill",
+          "light_type": "AREA",
+          "energy": 690.0,
+          "hide_render": true,
+          "in_scene": true
+        },
+        {
+          "name": "LIGHT_ReviewKey",
+          "light_type": "AREA",
+          "energy": 980.0,
+          "hide_render": true,
+          "in_scene": true
+        },
+        {
+          "name": "LIGHT_ReviewRim",
+          "light_type": "AREA",
+          "energy": 820.0,
+          "hide_render": true,
+          "in_scene": true
+        },
+        {
+          "name": "LIGHT_RIM",
+          "light_type": "AREA",
+          "energy": 560.0,
+          "hide_render": false,
+          "in_scene": true
+        }
+      ],
+      "render_started_utc": "2026-10-08T21:32:34.616065+00:00",
+      "render_finished_utc": "2026-10-08T21:32:38.302797+00:00",
+      "render_output": "C:\\Users\\joesh\\OneDrive - Dr. Joe Shepherd\\6.Content\\Ava\\05_Renders\\Visual_Lock\\FrontVisualFit_v02\\Validation\\Front_Render_FrontVisualFit_v02.png"
+    },
+    "tool_version": "1.0.0",
+    "tool_sha256": {
+      "Ava_ValidateFront.py": "AE7544D24385F0DE611E13E88856BA942AAB0A29FD1B5BFB5F74415ED6DD60E9",
+      "Ava_VisualLock_Common.py": "B4233127A80AB28750EF46B9E2CD55943EB72BB520E0513ED4DEAEAEF6EFD5D2",
+      "Ava_InspectBlend.py": "0D18CDB2841BD5967BD0D90ED335D5E7D2CADAD60932087C11C67F00C049B9E0"
+    },
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26220-SP0"
+  },
+  "summary": {
+    "front_identity_gates": "PASS",
+    "calculated_blocking_gates": [
+      "SilhouetteIoU",
+      "HeadBodyRatioError",
+      "EyeCenterError",
+      "EyeSizeError"
+    ],
+    "failing_blocking_gates": [],
+    "manual_review_required_metrics": [
+      "ListeningModuleCenterError",
+      "ListeningModuleDiameterError",
+      "TorsoWidthError",
+      "ThighWidthError",
+      "FootWidthError"
+    ],
+    "rule": "FRONT identity gates PASS only when every blocking gate with status calculated passes. Blocking gates with status manual_review_required are listed as open human-review items; they do not produce PASS or FAIL. Secondary metrics are reported but never block.",
+    "visual_approval": "NOT_GRANTED_BY_METRICS \u2014 human review approves character fidelity."
+  },
+  "metrics": {
+    "SilhouetteIoU": {
+      "status": "calculated",
+      "blocking": true,
+      "formula": "count(TargetMask AND RenderMask) / count(TargetMask OR RenderMask), over all 600x800 pixels, both masks binary",
+      "target_measurement": {
+        "foreground_pixels": 219580
+      },
+      "rendered_measurement": {
+        "foreground_pixels": 215288,
+        "intersection": 207587,
+        "union": 227281
+      },
+      "value": 0.9133495540762316,
+      "comparison": ">=",
+      "threshold": 0.9,
+      "pass": true
+    },
+    "HeadBodyRatioError": {
+      "status": "calculated",
+      "blocking": true,
+      "formula": "abs(render_heads_tall - target_heads_tall) / target_heads_tall, where heads_tall = character_height_px / head_height_px",
+      "target_measurement": {
+        "heads_tall": 2.2356687898089174,
+        "character_height_px": 702,
+        "head_height_px": 314
+      },
+      "rendered_measurement": {
+        "heads_tall": 2.210691823899371,
+        "character_height_px": 703,
+        "head_height_px": 318
+      },
+      "value": 0.011172033184611848,
+      "comparison": "<=",
+      "threshold": 0.02,
+      "pass": true
+    },
+    "EyeCenterError": {
+      "status": "calculated",
+      "blocking": true,
+      "formula": "per eye: euclidean_distance(target_eye_center_px, render_eye_center_px) / target_head_max_width_px",
+      "normalization": "target head maximum width in pixels (Ava_Geometry_Lock_v1.1.json landmarks.head.max_width_row.pixel_value.width)",
+      "target_measurement": [
+        [
+          234.0,
+          261.0
+        ],
+        [
+          360.5,
+          253.5
+        ]
+      ],
+      "rendered_measurement": [
+        [
+          233.5,
+          262.0
+        ],
+        [
+          360.0,
+          254.0
+        ]
+      ],
+      "per_eye": {
+        "left": 0.002606139833915839,
+        "right": 0.0016482675552133975
+      },
+      "value": 0.0021272036945646183,
+      "reported_value_rule": "mean of the two per-eye errors",
+      "pass_rule": "max of the two per-eye errors <= threshold",
+      "comparison": "<=",
+      "threshold": 0.02,
+      "pass": true
+    },
+    "EyeSizeError": {
+      "status": "calculated",
+      "blocking": true,
+      "formula": "per eye: (abs(rw - tw) / tw + abs(rh - th) / th) / 2, with w = xmax - xmin + 1 and h = ymax - ymin + 1 of the eye bounding box",
+      "normalization": null,
+      "target_measurement": [
+        {
+          "xmin": 189,
+          "ymin": 208,
+          "xmax": 279,
+          "ymax": 314
+        },
+        {
+          "xmin": 317,
+          "ymin": 204,
+          "xmax": 404,
+          "ymax": 303
+        }
+      ],
+      "rendered_measurement": [
+        {
+          "xmin": 188,
+          "ymin": 210,
+          "xmax": 279,
+          "ymax": 314
+        },
+        {
+          "xmin": 316,
+          "ymin": 205,
+          "xmax": 404,
+          "ymax": 303
+        }
+      ],
+      "per_eye": {
+        "left": 0.014840299887028858,
+        "right": 0.010681818181818181
+      },
+      "value": 0.01276105903442352,
+      "reported_value_rule": "mean of the two per-eye errors",
+      "pass_rule": "max of the two per-eye errors <= threshold",
+      "comparison": "<=",
+      "threshold": 0.03,
+      "pass": true
+    },
+    "ListeningModuleCenterError": {
+      "status": "manual_review_required",
+      "blocking": true,
+      "formula": "per module: euclidean_distance(target_center_px, render_center_px) / target_head_max_width_px",
+      "target_measurement": null,
+      "rendered_measurement": null,
+      "value": null,
+      "comparison": "<=",
+      "threshold": 0.03,
+      "reason": "The left listening module is partially occluded by hair; its full circle, center, and diameters are not directly visible."
+    },
+    "ListeningModuleDiameterError": {
+      "status": "manual_review_required",
+      "blocking": true,
+      "formula": "per module: abs(render_outer_diameter_px - target_outer_diameter_px) / target_outer_diameter_px",
+      "target_measurement": null,
+      "rendered_measurement": null,
+      "value": null,
+      "comparison": "<=",
+      "threshold": 0.03,
+      "reason": "The left listening module is partially occluded by hair; its full circle, center, and diameters are not directly visible."
+    },
+    "HandScaleError": {
+      "status": "calculated",
+      "blocking": false,
+      "formula": "per hand: (abs(rw - tw) / tw + abs(rh - th) / th) / 2 on the hand bounding box; reported value = mean over hands measured in both images",
+      "target_measurement": [
+        {
+          "xmin": 70,
+          "ymin": 505,
+          "xmax": 138,
+          "ymax": 584
+        },
+        {
+          "xmin": 446,
+          "ymin": 505,
+          "xmax": 518,
+          "ymax": 582
+        }
+      ],
+      "rendered_measurement": [
+        {
+          "xmin": 87,
+          "ymin": 509,
+          "xmax": 175,
+          "ymax": 589
+        },
+        {
+          "xmin": 424,
+          "ymin": 509,
+          "xmax": 512,
+          "ymax": 589
+        }
+      ],
+      "per_hand": {
+        "left": 0.15117753623188407,
+        "right": 0.12881981032665962
+      },
+      "value": 0.13999867327927185,
+      "reference_threshold": 0.03,
+      "within_reference_threshold": false,
+      "note": "Tracked and always reported. It does not block progression from FRONT identity fitting in v1.0."
+    },
+    "TorsoWidthError": {
+      "status": "manual_review_required",
+      "blocking": false,
+      "formula": "abs(render_width - target_width) / character_height",
+      "value": null
+    },
+    "ThighWidthError": {
+      "status": "manual_review_required",
+      "blocking": false,
+      "formula": "abs(render_width - target_width) / character_height",
+      "value": null
+    },
+    "FootWidthError": {
+      "status": "manual_review_required",
+      "blocking": false,
+      "formula": "abs(render_width - target_width) / character_height",
+      "value": null
+    }
+  },
+  "render_segmentation": {
+    "background_rgb": [
+      189,
+      189,
+      189
+    ],
+    "background_tolerance": 3,
+    "shadow_exclusion_bottom_row": 738,
+    "shadow_onset_row": 719,
+    "sole_peak_row": 734,
+    "sole_supported_x_ranges": [
+      [
+        148,
+        285
+      ],
+      [
+        292,
+        428
+      ]
+    ],
+    "bounds_inclusive": [
+      74,
+      36,
+      513,
+      738
+    ],
+    "foreground_pixel_count": 215288,
+    "derivation": "Border-connected background flood fill; floor contact derived from the last row with at least eight pixels below luminance 140; broad lower-row shadow pixels outside the two peak-sole support ranges removed; components below 18 pixels discarded."
+  },
+  "render_landmarks": {
+    "character": {
+      "topmost_visible_pixel": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          293.5,
+          36
+        ],
+        "normalized_value": [
+          0.0,
+          0.9985775248933144
+        ],
+        "derivation": "Minimum y in canonical silhouette mask."
+      },
+      "bottommost_visible_pixel": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          293.5,
+          738
+        ],
+        "normalized_value": [
+          0.0,
+          0.0
+        ],
+        "derivation": "Maximum y in shadow-free canonical silhouette mask."
+      },
+      "centerline": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 293.5,
+        "normalized_value": 0.0,
+        "derivation": "Midpoint of the inclusive leftmost and rightmost canonical silhouette pixels."
+      },
+      "bounding_box": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": {
+          "xmin": 74,
+          "ymin": 36,
+          "xmax": 513,
+          "ymax": 738
+        },
+        "normalized_value": {
+          "xmin": -0.31223328591749644,
+          "xmax": 0.31223328591749644,
+          "ymin": 0.0,
+          "ymax": 1.0
+        },
+        "derivation": "Inclusive bounds of the shadow-free canonical silhouette mask."
+      },
+      "total_height": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 703,
+        "normalized_value": 1.0,
+        "derivation": "bottommost_y - topmost_y + 1."
+      }
+    },
+    "head": {
+      "top": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          293.5,
+          36
+        ],
+        "normalized_value": [
+          0.0,
+          0.9985775248933144
+        ],
+        "derivation": "Top row of the upper silhouette component."
+      },
+      "bottom": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          293.5,
+          353
+        ],
+        "normalized_value": [
+          0.0,
+          0.5476529160739687
+        ],
+        "derivation": "Strongest upper-half silhouette-width contraction, derived from an 7-row smoothed row-width profile."
+      },
+      "leftmost": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          74,
+          240
+        ],
+        "normalized_value": [
+          -0.31223328591749644,
+          0.7083926031294452
+        ],
+        "derivation": "Minimum x within the raster-derived head region."
+      },
+      "rightmost": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          513,
+          241
+        ],
+        "normalized_value": [
+          0.31223328591749644,
+          0.7069701280227596
+        ],
+        "derivation": "Maximum x within the raster-derived head region."
+      },
+      "max_width_row": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": {
+          "row": 251,
+          "left": 74,
+          "right": 513,
+          "width": 440
+        },
+        "normalized_value": {
+          "row_y": 0.6927453769559033,
+          "width": 0.6258890469416786
+        },
+        "derivation": "Maximum inclusive silhouette width within the raster-derived head region."
+      },
+      "height": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 318,
+        "normalized_value": 0.4523470839260313,
+        "derivation": "head_bottom - head_top + 1."
+      },
+      "canonical_heads_tall": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": 2.210691823899371,
+        "normalized_value": 2.210691823899371,
+        "derivation": "character_total_height_pixels / head_height_pixels."
+      },
+      "chin": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          282.5,
+          348
+        ],
+        "normalized_value": [
+          -0.015647226173541962,
+          0.5547652916073968
+        ],
+        "derivation": "Bottommost pixel of the largest warm face-color component inside the central head region."
+      },
+      "cheek_left": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          181,
+          249
+        ],
+        "normalized_value": [
+          -0.1600284495021337,
+          0.6955903271692745
+        ],
+        "derivation": "Left extent on the widest lower-half row of the warm face-color component."
+      },
+      "cheek_right": {
+        "status": "measured",
+        "source": "Ava_Target_Front.png",
+        "pixel_value": [
+          425,
+          249
+        ],
+        "normalized_value": [
+          0.18705547652916074,
+          0.6955903271692745
+        ],
+        "derivation": "Right extent on the widest lower-half row of the warm face-color component."
+      }
+    },
+    "eyes": {
+      "left": {
+        "eye_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            233.5,
+            262.0
+          ],
+          "normalized_value": [
+            -0.08534850640113797,
+            0.6770981507823614
+          ],
+          "derivation": "Center of the local eye-feature bounding box surrounding the detected amber iris."
+        },
+        "eye_bounding_box": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "xmin": 188,
+            "ymin": 210,
+            "xmax": 279,
+            "ymax": 314
+          },
+          "normalized_value": {
+            "xmin": -0.15007112375533427,
+            "xmax": -0.020625889046941678,
+            "ymin": 0.6031294452347084,
+            "ymax": 0.7510668563300142
+          },
+          "derivation": "Bounds of dark or strongly chromatic eye-feature pixels within the iris-local window."
+        },
+        "iris_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            233.35139760410723,
+            257.00855675984025
+          ],
+          "normalized_value": [
+            -0.08555988961008928,
+            0.6841983545379229
+          ],
+          "derivation": "Centroid of the connected amber iris component."
+        },
+        "iris_diameter": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "width": 53,
+            "height": 57,
+            "equivalent": 55.0
+          },
+          "normalized_value": {
+            "width": 0.07539118065433854,
+            "height": 0.08108108108108109,
+            "equivalent": 0.07823613086770982
+          },
+          "derivation": "Inclusive amber-component width and height; equivalent diameter is their arithmetic mean."
+        },
+        "pupil_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            232.939226519337,
+            251.70902394106815
+          ],
+          "normalized_value": [
+            -0.08614619271787054,
+            0.6917368080496897
+          ],
+          "derivation": "Centroid of pixels with luminance below 70 inside the detected iris bounding box."
+        }
+      },
+      "right": {
+        "eye_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            360.0,
+            254.0
+          ],
+          "normalized_value": [
+            0.0945945945945946,
+            0.6884779516358464
+          ],
+          "derivation": "Center of the local eye-feature bounding box surrounding the detected amber iris."
+        },
+        "eye_bounding_box": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "xmin": 316,
+            "ymin": 205,
+            "xmax": 404,
+            "ymax": 303
+          },
+          "normalized_value": {
+            "xmin": 0.032005689900426744,
+            "xmax": 0.15718349928876243,
+            "ymin": 0.6187766714082503,
+            "ymax": 0.7581792318634424
+          },
+          "derivation": "Bounds of dark or strongly chromatic eye-feature pixels within the iris-local window."
+        },
+        "iris_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            359.25344714379514,
+            248.01575837163494
+          ],
+          "normalized_value": [
+            0.09353264174081813,
+            0.6969903863845875
+          ],
+          "derivation": "Centroid of the connected amber iris component."
+        },
+        "iris_diameter": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "width": 50,
+            "height": 54,
+            "equivalent": 52.0
+          },
+          "normalized_value": {
+            "width": 0.07112375533428165,
+            "height": 0.07681365576102418,
+            "equivalent": 0.07396870554765292
+          },
+          "derivation": "Inclusive amber-component width and height; equivalent diameter is their arithmetic mean."
+        },
+        "pupil_center": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": [
+            359.5632911392405,
+            242.36708860759492
+          ],
+          "normalized_value": [
+            0.09397338711129517,
+            0.7050254785098222
+          ],
+          "derivation": "Centroid of pixels with luminance below 70 inside the detected iris bounding box."
+        }
+      }
+    },
+    "arms_hands": {
+      "shoulder": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Shoulder centers require human joint annotation.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "elbow": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Elbow centers require human joint annotation.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "wrist": {
+        "status": "manual_review_required",
+        "source": "Ava_Target_Front.png",
+        "reason": "Wrist centers require human joint annotation.",
+        "pixel_value": null,
+        "normalized_value": null,
+        "derivation": "No exact value stored because the raster does not expose an unambiguous boundary or joint center."
+      },
+      "hand_bounding_boxes": {
+        "left": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "xmin": 87,
+            "ymin": 509,
+            "xmax": 175,
+            "ymax": 589
+          },
+          "normalized_value": {
+            "xmin": -0.2937411095305832,
+            "xmax": -0.16856330014224752,
+            "ymin": 0.2119487908961593,
+            "ymax": 0.32574679943101
+          },
+          "derivation": "Bounds of the outermost connected dark hand component on the image-left side."
+        },
+        "right": {
+          "status": "measured",
+          "source": "Ava_Target_Front.png",
+          "pixel_value": {
+            "xmin": 424,
+            "ymin": 509,
+            "xmax": 512,
+            "ymax": 589
+          },
+          "normalized_value": {
+            "xmin": 0.1856330014224751,
+            "xmax": 0.3108108108108108,
+            "ymin": 0.2119487908961593,
+            "ymax": 0.32574679943101
+          },
+          "derivation": "Bounds of the outermost connected dark hand component on the image-right side."
+        }
+      }
+    }
+  },
+  "artifacts": {
+    "render": {
+      "file": "Front_Render_FrontVisualFit_v02.png",
+      "sha256": "0A4B6DF3D5F3C95E4E3F57BDFF240D7AEACB122B57912BE87090F6A9376517AB"
+    },
+    "overlay": {
+      "file": "Front_Overlay_FrontVisualFit_v02.png",
+      "sha256": "8B320020E21DA0AD786E52BF4D81F3B6B5DA8C8C16EA52147B0A9A15943B5B0B"
+    },
+    "difference": {
+      "file": "Front_Difference_FrontVisualFit_v02.png",
+      "sha256": "01DE35CC053BF2556D77771FA58BB13D3324C4191CAE61B4DC73942CD6B3FE56"
+    },
+    "target_mask": {
+      "file": "Front_TargetMask.png",
+      "sha256": "0232CE4979A936501E8E203D829010AC82368495EF426A4551912374F2813E95"
+    },
+    "render_mask": {
+      "file": "Front_RenderMask.png",
+      "sha256": "D3C1F45F4FBC833FCE7AC74FA73C7979981264121FE98C1AFA8ABFC0BB6F728A"
+    },
+    "mask_comparison": {
+      "file": "Front_MaskComparison_FrontVisualFit_v02.png",
+      "sha256": "E905AD32D17F6A31D7016E34FA0B00E7D721A590927B628D6C1316921C7D4171"
+    },
+    "landmarks": {
+      "file": "Front_LandmarkVisualization_FrontVisualFit_v02.png",
+      "sha256": "B8BB5C70D1A3F2043EC08646A25C71462A0EB734F218C346335492B49EFBE514"
+    }
+  },
+  "identical_to_prior_artifacts": {
+    "target_mask": [
+      "05_Renders/Visual_Lock/FrontFit_v14_Verified/Front_TargetMask.png"
+    ]
+  },
+  "manual_review_required": [
+    "face.brow_landmarks",
+    "hair.side_silhouette_landmarks",
+    "listening_modules.left center/outer diameter/inner diameter",
+    "listening_modules.right center/outer diameter/inner diameter",
+    "torso.shoulder_centers/widest_points/waist_extents/pelvis_extents",
+    "arms_hands.shoulder/elbow/wrist",
+    "legs_feet.hip/knee/ankle/thigh_width/lower_leg_width/foot_bounding_boxes"
+  ],
+  "modified": {
+    "geometry": false,
+    "rig": false,
+    "animation": false,
+    "materials": false,
+    "cameras": false,
+    "evidence": "Source .blend SHA-256 identical before and after; the .blend is never saved."
+  }
+}

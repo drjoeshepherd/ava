@@ -1,0 +1,122 @@
+{
+  "blender_version": "5.2.2 LTS",
+  "blend_filepath": "C:\\Users\\joesh\\OneDrive - Dr. Joe Shepherd\\6.Content\\Ava\\02_Production\\Visual_Lock\\FrontVisualFit_v02\\Ava_v1.0_FrontVisualFit_v02.blend",
+  "scene": "Scene",
+  "errors": [],
+  "warnings": [],
+  "in_memory_overrides": {
+    "scene.camera": "CAM_CANON_FRONT",
+    "resolution": [
+      600,
+      800
+    ],
+    "resolution_percentage": 100,
+    "file_format": "PNG RGB 8-bit"
+  },
+  "camera": {
+    "name": "CAM_CANON_FRONT",
+    "location": [
+      0.0,
+      -15.0,
+      3.3874943256378174
+    ],
+    "rotation_euler": [
+      1.5707964897155762,
+      -0.0,
+      0.0
+    ],
+    "projection": "ORTHO",
+    "ortho_scale": 7.367555141448975,
+    "use_dof": false,
+    "matrix_world": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.6292068494294654e-07,
+        -1.0,
+        -15.0
+      ],
+      [
+        0.0,
+        1.0,
+        -1.6292068494294654e-07,
+        3.3874943256378174
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "camera_lock_checks": {
+    "location": true,
+    "rotation_euler": true,
+    "projection": true,
+    "ortho_scale": true,
+    "no_dof": true
+  },
+  "render_settings_in_file": {
+    "engine": "BLENDER_EEVEE",
+    "resolution_x": 600,
+    "resolution_y": 800,
+    "resolution_percentage": 100,
+    "film_transparent": false,
+    "view_transform": "AgX",
+    "look": "None",
+    "active_camera": "CAM_CANON_FRONT"
+  },
+  "lights": [
+    {
+      "name": "LIGHT_FILL",
+      "light_type": "AREA",
+      "energy": 480.0,
+      "hide_render": false,
+      "in_scene": true
+    },
+    {
+      "name": "LIGHT_KEY",
+      "light_type": "AREA",
+      "energy": 800.0,
+      "hide_render": false,
+      "in_scene": true
+    },
+    {
+      "name": "LIGHT_ReviewFill",
+      "light_type": "AREA",
+      "energy": 690.0,
+      "hide_render": true,
+      "in_scene": true
+    },
+    {
+      "name": "LIGHT_ReviewKey",
+      "light_type": "AREA",
+      "energy": 980.0,
+      "hide_render": true,
+      "in_scene": true
+    },
+    {
+      "name": "LIGHT_ReviewRim",
+      "light_type": "AREA",
+      "energy": 820.0,
+      "hide_render": true,
+      "in_scene": true
+    },
+    {
+      "name": "LIGHT_RIM",
+      "light_type": "AREA",
+      "energy": 560.0,
+      "hide_render": false,
+      "in_scene": true
+    }
+  ],
+  "render_started_utc": "2026-10-08T21:32:34.616065+00:00",
+  "render_finished_utc": "2026-10-08T21:32:38.302797+00:00",
+  "render_output": "C:\\Users\\joesh\\OneDrive - Dr. Joe Shepherd\\6.Content\\Ava\\05_Renders\\Visual_Lock\\FrontVisualFit_v02\\Validation\\Front_Render_FrontVisualFit_v02.png"
+}
