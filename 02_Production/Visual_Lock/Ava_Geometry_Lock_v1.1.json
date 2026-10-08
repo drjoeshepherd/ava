@@ -42,7 +42,7 @@
       "normalized_value": 2.2356687898089174,
       "derivation": "character_total_height_pixels / head_height_pixels."
     },
-    "approximate_description": "~2.5 heads",
+    "approximate_description": "~2.24 heads",
     "acceptance_authority": "canonical_head_body_ratio"
   },
   "silhouette_mask": {
