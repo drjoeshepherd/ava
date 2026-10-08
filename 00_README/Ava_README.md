@@ -10,7 +10,7 @@ Any intentional change requires an explicitly approved new version, such as **v1
 
 ## Authoritative files
 
-1. `Ava v1.0 — Canonical Character Construction Sheet.png` — primary visual authority; the final approximately 2.5-head construction sheet.
+1. `Ava v1.0 — Canonical Character Construction Sheet.png` — primary visual authority; the final construction sheet; measured front ratio 2.235668790 (approximately 2.24 heads tall).
 2. `01_Canon/Ava_Character_Bible_v1.0.md` — purpose, personality, relationships, trust rules, story grammar, and prohibited behaviors.
 3. `01_Canon/Ava_Visual_Canon_v1.0.md` — locked visual design, materials, proportions, and emotional-light states.
 4. `02_Production/Ava_Production_Spec_v1.0.md` — modeling, topology, rigging, controls, exports, and naming.
@@ -24,7 +24,7 @@ If text and an image appear to conflict, use the final canonical construction sh
 
 | File | Status | Reason |
 |---|---|---|
-| `Ava v1.0 — Canonical Character Construction Sheet.png` | **CANONICAL / AUTHORITATIVE** | Explicitly labeled canonical and shows the locked approximately 2.5-head design with production views and construction details. |
+| `Ava v1.0 — Canonical Character Construction Sheet.png` | **CANONICAL / AUTHORITATIVE** | Explicitly labeled canonical and shows the locked approximately 2.24-head design (measured front ratio 2.235668790) with production views and construction details. |
 | `Ava v1.0.png` | **NON-CANONICAL / REJECTED DEVELOPMENT REFERENCE** | Earlier sheet explicitly labels Ava at approximately 3.5 heads and includes development imagery that conflicts with locked proportions and the no-canine-anatomy rule. Do not model from it. |
 | `Ava.png` | **NON-CANONICAL / EARLY CONCEPT REFERENCE** | Earlier concept/brand sheet with useful thematic history but not final construction authority. Do not infer geometry, proportions, or new design details from it. |
 | `AVA_ A Brighter Tomorrow.png` | **NON-CANONICAL / EARLY CONCEPT REFERENCE** | Earlier brand/concept sheet with a taller, more humanoid construction and expressive scenario art. Useful only for thematic history; do not model from it. |

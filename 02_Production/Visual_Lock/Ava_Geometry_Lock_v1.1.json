@@ -1,6 +1,14 @@
 {
   "schema": "Ava_Geometry_Lock_v1.1",
-  "status": "RASTER_DERIVED_REVIEW_REQUIRED",
+  "status": "APPROVED",
+  "approval": {
+    "decision": "APPROVED",
+    "approved_by": "Joe Shepherd",
+    "approved_on": "2026-10-08",
+    "authority": "02_Production/Tasks/AVA-BASELINE-INTEGRITY-001.sign.md",
+    "previous_status": "RASTER_DERIVED_REVIEW_REQUIRED",
+    "note": "The lock itself is approved. Entries marked manual_review_required are still unmeasured raster features that need human annotation; they are not pending approval of this lock. Raster-derived measurements were not changed by this approval."
+  },
   "authority_hierarchy": [
     "Ava_Target_Front.png",
     "measurements derived mathematically from Ava_Target_Front.png",

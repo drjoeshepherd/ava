@@ -5,7 +5,7 @@
 
 ## Production objective
 
-Build a reusable, animation-ready Ava v1.0 master that reproduces the locked approximately 2.5-head design and supports subtle character acting. The movement target is approximately **70% precision machine / 30% animated character**: designed, intentional, balanced motion with enough softness and timing variation to feel alive.
+Build a reusable, animation-ready Ava v1.0 master that reproduces the locked approximately 2.24-head design (measured front ratio 2.235668790) and supports subtle character acting. The movement target is approximately **70% precision machine / 30% animated character**: designed, intentional, balanced motion with enough softness and timing variation to feel alive.
 
 ## Model hierarchy
 
@@ -30,7 +30,7 @@ The final hierarchy may adapt to the production pipeline, but names, left/right 
 ## Geometry and topology
 
 - Match the canonical turnaround before adding detail.
-- Preserve the approximately 2.5-head silhouette from all primary views.
+- Preserve the approximately 2.24-head silhouette from all primary views.
 - Use clean, animation-ready topology with predictable deformation and no unnecessary density.
 - Keep rigid shell elements mechanically legible; do not make hard components deform like flesh.
 - Provide adequate deformation loops at neck, shoulders, elbows, wrists, hips, knees, ankles, eyelids, brows, and mouth.
@@ -87,7 +87,7 @@ Create reusable presets for `Idle`, `Listening`, `Curious`, `Thinking`, `Connect
 
 ## Canonical neutral pose
 
-Provide a neutral standing pose that matches the canonical sheet, reads at approximately 2.5 heads tall, keeps the head level and gaze present, uses relaxed shoulders and compact limb placement, keeps hands open and restrained, distributes weight evenly without stiffness, and shows all signature elements clearly.
+Provide a neutral standing pose that matches the canonical sheet, reads at approximately 2.24 heads tall (front ratio 2.235668790), keeps the head level and gaze present, uses relaxed shoulders and compact limb placement, keeps hands open and restrained, distributes weight evenly without stiffness, and shows all signature elements clearly.
 
 Also deliver a clean bind/rest pose suitable for rig maintenance. The bind pose is a technical artifact and must not replace the canonical neutral pose in reviews.
 
@@ -118,7 +118,7 @@ Validate exports by reimporting them into a clean scene and checking scale, orie
 
 ## Review gates
 
-1. **Silhouette/proportion gate** — grayscale turnaround matches the canonical 2.5-head sheet.
+1. **Silhouette/proportion gate** — grayscale turnaround matches the canonical sheet (approximately 2.24 heads tall; front ratio 2.235668790).
 2. **Construction/material gate** — materials and mechanical articulation are legible without excess detail.
 3. **Rig gate** — approved controls work cleanly across representative poses.
 4. **Acting gate** — subtle eye-first performance and stillness are achievable.

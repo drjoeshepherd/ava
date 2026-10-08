@@ -1,0 +1,89 @@
+{
+  "schema": "Ava_Front_Acceptance_Gates_v1.0",
+  "version": "1.0",
+  "status": "APPROVED",
+  "approved_by": "Joe Shepherd",
+  "approved_on": "2026-10-08",
+  "authority": "02_Production/Tasks/AVA-BASELINE-INTEGRITY-001.sign.md",
+  "view": "Front",
+  "camera": "CAM_CANON_FRONT",
+  "geometry_lock": "02_Production/Visual_Lock/Ava_Geometry_Lock_v1.1.json",
+  "target_raster": "02_Production/Visual_Lock/Targets/Ava_Target_Front.png",
+  "target_mask": "02_Production/Visual_Lock/Targets/Ava_Target_Front_Mask.png",
+  "visual_approval_rule": "Passing every blocking gate does not equal visual approval. Human review approves character fidelity.",
+  "manual_review_rule": "A metric whose target cannot be measured directly from the canonical raster has status manual_review_required and no pass/fail value. Tools must never invent a pass/fail result for it.",
+  "overall_rule": "FRONT identity gates PASS only when every blocking gate with status calculated passes. Blocking gates with status manual_review_required are listed as open human-review items; they do not produce PASS or FAIL. Secondary metrics are reported but never block.",
+  "blocking_gates": {
+    "SilhouetteIoU": {
+      "comparison": ">=",
+      "threshold": 0.90,
+      "formula": "count(TargetMask AND RenderMask) / count(TargetMask OR RenderMask), over all 600x800 pixels, both masks binary",
+      "target_source": "Targets/Ava_Target_Front_Mask.png (file on disk, checksum in Ava_Target_Manifest_v1.0.json)",
+      "render_source": "derive_silhouette() applied to the CAM_CANON_FRONT render"
+    },
+    "HeadBodyRatioError": {
+      "comparison": "<=",
+      "threshold": 0.02,
+      "formula": "abs(render_heads_tall - target_heads_tall) / target_heads_tall, where heads_tall = character_height_px / head_height_px",
+      "target_value": 2.2356687898089174,
+      "target_source": "Ava_Geometry_Lock_v1.1.json landmarks.head.canonical_heads_tall"
+    },
+    "EyeCenterError": {
+      "comparison": "<=",
+      "threshold": 0.02,
+      "formula": "per eye: euclidean_distance(target_eye_center_px, render_eye_center_px) / target_head_max_width_px",
+      "normalization": "target head maximum width in pixels (Ava_Geometry_Lock_v1.1.json landmarks.head.max_width_row.pixel_value.width)",
+      "reported_value": "mean of the two per-eye errors",
+      "pass_rule": "max of the two per-eye errors <= threshold",
+      "target_source": "Ava_Geometry_Lock_v1.1.json landmarks.eyes.<left|right>.eye_center"
+    },
+    "EyeSizeError": {
+      "comparison": "<=",
+      "threshold": 0.03,
+      "formula": "per eye: (abs(rw - tw) / tw + abs(rh - th) / th) / 2, with w = xmax - xmin + 1 and h = ymax - ymin + 1 of the eye bounding box",
+      "reported_value": "mean of the two per-eye errors",
+      "pass_rule": "max of the two per-eye errors <= threshold",
+      "target_source": "Ava_Geometry_Lock_v1.1.json landmarks.eyes.<left|right>.eye_bounding_box"
+    },
+    "ListeningModuleCenterError": {
+      "comparison": "<=",
+      "threshold": 0.03,
+      "formula": "per module: euclidean_distance(target_center_px, render_center_px) / target_head_max_width_px",
+      "evaluate_only_when": "the target module center is directly measurable from the canonical raster (Geometry Lock entry status == measured)",
+      "current_target_status": "manual_review_required",
+      "current_reason": "Both modules are partially occluded by hair in Ava_Target_Front.png; full circles are not visible."
+    },
+    "ListeningModuleDiameterError": {
+      "comparison": "<=",
+      "threshold": 0.03,
+      "formula": "per module: abs(render_outer_diameter_px - target_outer_diameter_px) / target_outer_diameter_px",
+      "evaluate_only_when": "the target module outer diameter is directly measurable from the canonical raster (Geometry Lock entry status == measured)",
+      "current_target_status": "manual_review_required",
+      "current_reason": "Both modules are partially occluded by hair in Ava_Target_Front.png; full outer diameters are not visible."
+    }
+  },
+  "secondary_metrics": {
+    "HandScaleError": {
+      "blocking": false,
+      "reference_threshold": 0.03,
+      "formula": "per hand: (abs(rw - tw) / tw + abs(rh - th) / th) / 2 on the hand bounding box; reported value = mean over hands measured in both images",
+      "note": "Tracked and always reported. It does not block progression from FRONT identity fitting in v1.0."
+    },
+    "TorsoWidthError": {
+      "blocking": false,
+      "formula": "abs(render_width - target_width) / character_height",
+      "current_target_status": "manual_review_required"
+    },
+    "ThighWidthError": {
+      "blocking": false,
+      "formula": "abs(render_width - target_width) / character_height",
+      "current_target_status": "manual_review_required"
+    },
+    "FootWidthError": {
+      "blocking": false,
+      "formula": "abs(render_width - target_width) / character_height",
+      "current_target_status": "manual_review_required"
+    }
+  },
+  "formula_change_policy": "Formulas match the definitions used by Ava_RebuildVisualLock_v1.1.py and Ava_Geometry_Lock_v1.1.json metric_definitions. They may not be changed to improve scores. Any change requires a new gate-file version approved by Joe."
+}

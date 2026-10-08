@@ -22,6 +22,12 @@
     "Back": {
       "file": "Targets/Ava_Target_Back.png",
       "sha256": "EBFD7B4A617C4476F5CD34BED6C1ABC05C717FFDE3F2CB3D49E84EA553C4385D"
+    },
+    "FrontMask": {
+      "file": "Targets/Ava_Target_Front_Mask.png",
+      "sha256": "0232CE4979A936501E8E203D829010AC82368495EF426A4551912374F2813E95",
+      "derived_from": "Targets/Ava_Target_Front.png",
+      "traceability": "Added 2026-10-08 by AVA-BASELINE-INTEGRITY-001. Re-deriving the mask from Ava_Target_Front.png with the derive_silhouette() algorithm reproduced this file with 0 of 480000 pixel mismatches and identical segmentation parameters to Ava_Geometry_Lock_v1.1.json. The mask was not regenerated."
     }
   },
   "policy": "A changed checksum invalidates the visual-lock baseline and requires explicit review."

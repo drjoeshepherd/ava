@@ -37,7 +37,7 @@ A clean, tactile, understandable space with a quiet neutral background. The scen
 - Ava's delight is contained: slightly widened eyes, one soft chest pulse, and a tiny smile.
 - Hair follows the head in broad sculpted groups with subtle delayed settle.
 - All emotional emission is amber/gold only.
-- Keep Ava at locked approximately 2.5-head proportions with compact limbs.
+- Keep Ava at locked approximately 2.24-head proportions (front ratio 2.235668790) with compact limbs.
 
 ## Camera and staging
 

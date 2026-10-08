@@ -10,7 +10,7 @@ Create a production-ready 3D model and rig of **Ava v1.0** in Blender, then prov
 
 The local Ava folder contains image references. Their authority is not equal.
 
-- **Authoritative:** `Ava v1.0 — Canonical Character Construction Sheet.png`. This is the final approximately 2.5-head construction sheet and the primary visual source for modeling, proportions, silhouette, materials, details, and turnaround.
+- **Authoritative:** `Ava v1.0 — Canonical Character Construction Sheet.png`. This is the final construction sheet (measured front ratio 2.235668790, approximately 2.24 heads tall) and the primary visual source for modeling, proportions, silhouette, materials, details, and turnaround.
 - **Non-canonical:** `Ava v1.0.png`. This earlier development sheet includes an approximately 3.5-head proportion and rejected/development imagery. Do not model from it.
 - **Non-canonical:** `Ava.png`. This is an early concept/brand sheet. It may explain thematic history, but it is not geometry or proportion authority.
 - **Non-canonical:** `AVA_ A Brighter Tomorrow.png`. This is an earlier concept/brand sheet with a taller, more humanoid construction and scenario poses. Do not model from it.
@@ -20,7 +20,7 @@ If other images are added later and are not explicitly marked canonical, treat t
 
 ## Locked character definition
 
-Ava is compact, stylized, ageless, and non-human; approximately 2.5 heads tall; built around an oversized head and compact rounded body; designed with a short silver-white bob and large amber eyes; surfaced with a white ceramic/polymer exterior; structured with graphite mechanical joints and components; equipped with signature circular listening modules and a central circular chest emitter; built with compact mechanical hands and feet; and minimally detailed in an industrial/product-design language.
+Ava is compact, stylized, ageless, and non-human; approximately 2.24 heads tall (measured front ratio 2.235668790); built around an oversized head and compact rounded body; designed with a short silver-white bob and large amber eyes; surfaced with a white ceramic/polymer exterior; structured with graphite mechanical joints and components; equipped with signature circular listening modules and a central circular chest emitter; built with compact mechanical hands and feet; and minimally detailed in an industrial/product-design language.
 
 Her emotional lighting is amber/gold only.
 
@@ -41,7 +41,7 @@ Do not introduce teenage or adult humanoid proportions, realistic human skin, re
 ## Modeling requirements
 
 - Match the final sheet's front, three-quarter, side, three-quarter-back, and back views.
-- Lock the approximately 2.5-head height and oversized-head silhouette before refinement.
+- Lock the approximately 2.24-head height (front ratio 2.235668790) and oversized-head silhouette before refinement.
 - Use clean animation-ready topology.
 - Keep rigid shell elements distinct from deforming interfaces.
 - Model articulated shoulders, elbows, wrists, hips, knees, and ankles with plausible clearances.
@@ -102,7 +102,7 @@ Demonstrate the rig with the canonical neutral pose and a short proof based on `
 
 ## Acceptance criteria
 
-- Silhouette and primary views match the final 2.5-head construction sheet.
+- Silhouette and primary views match the final construction sheet (approximately 2.24 heads tall; front ratio 2.235668790).
 - No rejected 3.5-head or earlier-concept features drift into the model.
 - The face remains stylized, ageless, non-human, and non-sexualized.
 - Materials read as ceramic/polymer, graphite structure, silver-white hair, and amber-only emission.

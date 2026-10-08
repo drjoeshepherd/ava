@@ -267,7 +267,7 @@ Never claim Ava is visually complete solely because automated thresholds pass.
 For significant production work:
 
 1. Read relevant canon and lock files.
-2. Read the approved task-specific SIGN specification.
+2. Read the approved task-specific SIGN specification (stored in `02_Production/Tasks/<TASK-ID>.sign.md`).
 3. Check Git status.
 4. Create a checkpoint before broad or destructive changes.
 5. Make only authorized changes.

@@ -1,38 +1,156 @@
-# HISTORICAL — DO NOT RUN (AVA-BASELINE-INTEGRITY-001, 2026-10-08).
-# Running this script would overwrite the APPROVED Ava_Geometry_Lock_v1.1.json and the
-# checksum-locked Targets/Ava_Target_Front_Mask.png, and it measures a copied render instead
-# of a .blend. Kept only as the record of how Geometry Lock v1.1 was derived.
-# Use Ava_ValidateFront.py and Ava_InspectBlend.py instead.
-import sys as _sys
-_sys.exit("Ava_RebuildVisualLock_v1.1.py is historical and disabled. Use Ava_ValidateFront.py.")
+"""Ava visual-lock shared library (repository-local, portable).
 
-from PIL import Image, ImageChops, ImageEnhance, ImageDraw, ImageFont
-from collections import deque
+Created by AVA-BASELINE-INTEGRITY-001 (02_Production/Tasks/AVA-BASELINE-INTEGRITY-001.sign.md).
+
+Sections:
+  1. Portable repository paths, checksums, Blender discovery.
+  2. Raster measurement functions. These are copied verbatim (by AST extraction, not retyped)
+     from the superseded Ava_RebuildVisualLock_v1.1.py so that measurements and formulas are
+     identical to the ones that produced Ava_Geometry_Lock_v1.1.json. Do not edit them to
+     improve scores; any change needs a new, approved gate/lock version.
+  3. Front metrics, gate evaluation, and review artifacts.
+
+This module must import inside Blender's bundled Python, which usually has no Pillow.
+Pillow is only required for measurement, not for Blender-side rendering or inspection.
+"""
+
+TOOL_VERSION = "1.0.0"
+
+import glob
 import hashlib
 import json
 import math
 import os
 import shutil
+import sys
+from collections import deque
 
-ROOT = r"C:\Users\joesh\Documents\Codex\2026-10-07\build-ava-v1-0-as-a-2"
-LOCK_DIR = os.path.join(ROOT, "outputs", "visual-lock-system")
-TARGET = os.path.join(LOCK_DIR, "Targets", "Ava_Target_Front.png")
-TARGET_MASK_PATH = os.path.join(LOCK_DIR, "Targets", "Ava_Target_Front_Mask.png")
-LANDMARK_PATH = os.path.join(LOCK_DIR, "Ava_Target_Front_Landmarks_v1.1.png")
-GEOMETRY_PATH = os.path.join(LOCK_DIR, "Ava_Geometry_Lock_v1.1.json")
-CHANGELOG_PATH = os.path.join(LOCK_DIR, "Ava_Geometry_Lock_v1.0_to_v1.1_Changes.md")
-FIT_RENDER = os.path.join(ROOT, "outputs", "05_Renders", "Visual_Lock", "FrontFit_v01", "Front_Render_vFit01.png")
-REEVAL_DIR = os.path.join(ROOT, "outputs", "05_Renders", "Visual_Lock", "FrontFit_v01_Reeval")
-os.makedirs(REEVAL_DIR, exist_ok=True)
+try:  # Pillow is absent inside Blender; only measurement needs it.
+    from PIL import Image, ImageChops, ImageEnhance, ImageDraw, ImageFont
+    PIL_AVAILABLE = True
+except ImportError:  # pragma: no cover
+    Image = ImageChops = ImageEnhance = ImageDraw = ImageFont = None
+    PIL_AVAILABLE = False
 
-REEVAL_RENDER = os.path.join(REEVAL_DIR, "Front_vFit01_Reeval_Render.png")
-REEVAL_OVERLAY = os.path.join(REEVAL_DIR, "Front_vFit01_Reeval_Overlay.png")
-REEVAL_DIFFERENCE = os.path.join(REEVAL_DIR, "Front_vFit01_Reeval_Difference.png")
-REEVAL_MASK = os.path.join(REEVAL_DIR, "Front_vFit01_Reeval_RenderMask.png")
-REEVAL_MASK_COMPARISON = os.path.join(REEVAL_DIR, "Front_vFit01_Reeval_MaskComparison.png")
-REEVAL_METRICS = os.path.join(REEVAL_DIR, "Front_vFit01_Reeval_Metrics.json")
+# ---------------------------------------------------------------------------
+# 1. Portable paths, checksums, Blender discovery
+# ---------------------------------------------------------------------------
+
+VISUAL_LOCK_REL = os.path.join("02_Production", "Visual_Lock")
+
+
+def find_repo_root(start=None):
+    """Walk up from `start` (default: this file) to the folder holding CLAUDE.md and 02_Production/Visual_Lock."""
+    here = os.path.abspath(start or os.path.dirname(os.path.abspath(__file__)))
+    while True:
+        if os.path.isfile(os.path.join(here, "CLAUDE.md")) and os.path.isdir(os.path.join(here, VISUAL_LOCK_REL)):
+            return here
+        parent = os.path.dirname(here)
+        if parent == here:
+            raise RuntimeError("Ava repository root not found (looked for CLAUDE.md and 02_Production/Visual_Lock).")
+        here = parent
+
+
+def repo_paths(root):
+    lock = os.path.join(root, VISUAL_LOCK_REL)
+    return {
+        "root": root,
+        "visual_lock": lock,
+        "manifest": os.path.join(lock, "Ava_Target_Manifest_v1.0.json"),
+        "geometry_lock": os.path.join(lock, "Ava_Geometry_Lock_v1.1.json"),
+        "gates": os.path.join(lock, "Ava_Front_Acceptance_Gates_v1.0.json"),
+        "camera_lock": os.path.join(lock, "Ava_Camera_Lock_v1.0.json"),
+        "material_lock": os.path.join(lock, "Ava_Material_Lock_v1.0.json"),
+        "target_front": os.path.join(lock, "Targets", "Ava_Target_Front.png"),
+        "target_front_mask": os.path.join(lock, "Targets", "Ava_Target_Front_Mask.png"),
+        "renders": os.path.join(root, "05_Renders", "Visual_Lock"),
+        "tools": os.path.join(lock, "Tools"),
+    }
+
+
+def rel(root, path):
+    return os.path.relpath(os.path.abspath(path), root).replace(os.sep, "/")
+
+
+def load_json(path):
+    with open(path, encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def file_sha256(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest().upper()
+
+
+def verify_manifest(paths):
+    """Check every manifest entry against the file on disk. Returns a report; raises on any mismatch."""
+    manifest = load_json(paths["manifest"])
+    report = {"manifest": rel(paths["root"], paths["manifest"]), "entries": {}, "all_match": True}
+    source = manifest["authoritative_source"]
+    entries = {"authoritative_source": (os.path.join(paths["root"], source["file"]), source["sha256"])}
+    for name, item in manifest["targets"].items():
+        entries[name] = (os.path.join(paths["visual_lock"], item["file"]), item["sha256"])
+    for name, (path, expected) in entries.items():
+        actual = file_sha256(path) if os.path.isfile(path) else None
+        ok = actual == expected.upper()
+        report["entries"][name] = {"file": rel(paths["root"], path), "expected": expected.upper(), "actual": actual, "match": ok}
+        report["all_match"] = report["all_match"] and ok
+    if "FrontMask" not in manifest["targets"]:
+        raise RuntimeError("Manifest has no FrontMask entry; the front silhouette mask is not checksum-locked.")
+    if not report["all_match"]:
+        raise RuntimeError("Canonical target checksum mismatch: " + json.dumps(report, indent=2))
+    return report
+
+
+def find_blender(explicit=None):
+    """Locate blender. Order: --blender argument, AVA_BLENDER env var, PATH, standard install folders.
+    Returns (path, searched_locations). Never installs anything."""
+    searched = []
+    candidates = []
+    if explicit:
+        candidates.append(explicit)
+    if os.environ.get("AVA_BLENDER"):
+        candidates.append(os.environ["AVA_BLENDER"])
+    for name in ("blender", "blender.exe"):
+        found = shutil.which(name)
+        searched.append("PATH:" + name)
+        if found:
+            candidates.append(found)
+    patterns = [
+        r"C:\Program Files\Blender Foundation\Blender*\blender.exe",
+        r"C:\Program Files (x86)\Steam\steamapps\common\Blender\blender.exe",
+        os.path.expandvars(r"%LOCALAPPDATA%\Programs\Blender Foundation\Blender*\blender.exe"),
+        "/Applications/Blender.app/Contents/MacOS/Blender",
+        "/usr/bin/blender", "/usr/local/bin/blender", "/snap/bin/blender",
+    ]
+    for pattern in patterns:
+        searched.append(pattern)
+        candidates.extend(sorted(glob.glob(pattern), reverse=True))  # newest version folder first
+    for candidate in candidates:
+        if candidate and os.path.isfile(candidate):
+            return os.path.abspath(candidate), searched
+    return None, searched
+
+
+def blender_script_args():
+    """Arguments after '--' when a script runs inside Blender."""
+    return sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
+
+
+# ---------------------------------------------------------------------------
+# 2. Raster measurement functions (verbatim from Ava_RebuildVisualLock_v1.1.py)
+# ---------------------------------------------------------------------------
 
 WIDTH, HEIGHT = 600, 800
+
+
+
+
+
+
 
 def sha256(path):
     digest = hashlib.sha256()
@@ -536,209 +654,216 @@ def metric(status, formula, target, rendered, error, threshold, passed=None, not
 def measured(record):
     return record.get("status") == "measured"
 
-target_hash_before = sha256(TARGET)
-target_image = Image.open(TARGET).convert("RGB")
-target_mask, target_segmentation = derive_silhouette(target_image)
-save_mask(target_mask, TARGET_MASK_PATH)
-target_analysis = analyze_raster(target_image, target_mask, target_segmentation)
-draw_landmarks(target_image, target_analysis, LANDMARK_PATH)
 
-geometry_v11 = {
-    "schema": "Ava_Geometry_Lock_v1.1",
-    "status": "RASTER_DERIVED_REVIEW_REQUIRED",
-    "authority_hierarchy": [
-        "Ava_Target_Front.png",
-        "measurements derived mathematically from Ava_Target_Front.png",
-        "canon prose and approximate design descriptions",
-        "current Blender implementation",
-    ],
-    "source_image": {
-        "file": "Targets/Ava_Target_Front.png",
-        "dimensions_pixels": [WIDTH, HEIGHT],
-        "sha256": target_hash_before,
-        "modified": False,
-    },
-    "coordinate_system": {
-        "pixel_origin": "top-left",
-        "pixel_x": "right",
-        "pixel_y": "down",
-        "normalized_origin": "character bottom on raster-derived centerline",
-        "normalized_x": "(pixel_x - centerline_pixel_x) / character_height_pixels",
-        "normalized_y": "(bottommost_character_pixel_y - pixel_y) / character_height_pixels",
-        "character_height": 1.0,
-        "centerline_x": 0.0,
-    },
-    "proportion_rule": {
-        "canonical_head_body_ratio": target_analysis["head"]["canonical_heads_tall"],
-        "approximate_description": "~2.5 heads",
-        "acceptance_authority": "canonical_head_body_ratio",
-    },
-    "silhouette_mask": {
-        "file": "Targets/Ava_Target_Front_Mask.png",
-        "character_value": 255,
-        "background_value": 0,
-        "shadow_included": False,
-        "glow_included": False,
-        "soft_edge_policy": "binary after border-connected background segmentation",
-        "derivation": target_segmentation,
-    },
-    "landmarks": {key: target_analysis[key] for key in ["character", "head", "eyes", "face", "hair", "listening_modules", "torso", "arms_hands", "legs_feet"]},
-    "manual_review_required": target_analysis["manual_review_required"],
-    "metric_definitions": {
-        "HeadBodyRatioError": "abs(render_heads_tall - target_heads_tall) / target_heads_tall",
-        "EyeCenterError": "Euclidean pixel-center distance / target head maximum width",
-        "EyeSizeError": "mean(abs(render_eye_width-target_eye_width)/target_eye_width, abs(render_eye_height-target_eye_height)/target_eye_height)",
-        "ListeningModuleCenterError": "Euclidean pixel-center distance / target head maximum width; not evaluated until manual module annotation exists",
-        "ListeningModuleDiameterError": "abs(render_diameter-target_diameter)/target_diameter; not evaluated until manual module annotation exists",
-        "TorsoWidthError": "abs(render_width-target_width)/character_height; not evaluated until manual torso annotation exists",
-        "HandScaleError": "mean absolute relative error of target/render hand bbox width and height",
-        "ThighWidthError": "abs(render_width-target_width)/character_height; not evaluated until manual thigh annotation exists",
-        "FootWidthError": "abs(render_width-target_width)/character_height; not evaluated until manual foot annotation exists",
-        "SilhouetteIoU": "intersection(TargetMask, RenderMask) / union(TargetMask, RenderMask)",
-    },
-}
-with open(GEOMETRY_PATH, "w", encoding="utf-8") as handle:
-    json.dump(geometry_v11, handle, indent=2)
+# ---------------------------------------------------------------------------
+# 3. Front metrics, gates, artifacts
+# ---------------------------------------------------------------------------
 
-shutil.copyfile(FIT_RENDER, REEVAL_RENDER)
-render_image = Image.open(REEVAL_RENDER).convert("RGB")
-render_mask, render_segmentation = derive_silhouette(render_image)
-save_mask(render_mask, REEVAL_MASK)
-render_analysis = analyze_raster(render_image, render_mask, render_segmentation)
-Image.blend(target_image, render_image, 0.5).save(REEVAL_OVERLAY, optimize=True)
-ImageEnhance.Contrast(ImageChops.difference(target_image, render_image)).enhance(2.4).save(REEVAL_DIFFERENCE, optimize=True)
+def load_binary_mask(path):
+    image = Image.open(path).convert("L")
+    if image.size != (WIDTH, HEIGHT):
+        raise RuntimeError("Mask %s is %s, expected %s" % (path, image.size, (WIDTH, HEIGHT)))
+    pixels = image.load()
+    return [bytearray(1 if pixels[x, y] > 127 else 0 for x in range(WIDTH)) for y in range(HEIGHT)]
 
-intersection = 0
-union = 0
-comparison = Image.new("RGB", (WIDTH, HEIGHT), (0, 0, 0))
-comparison_pixels = comparison.load()
-for y in range(HEIGHT):
-    for x in range(WIDTH):
-        target_value = bool(target_mask[y][x])
-        render_value = bool(render_mask[y][x])
-        intersection += target_value and render_value
-        union += target_value or render_value
-        if target_value and render_value:
-            comparison_pixels[x, y] = (255, 255, 255)
-        elif target_value:
-            comparison_pixels[x, y] = (255, 70, 70)
-        elif render_value:
-            comparison_pixels[x, y] = (0, 200, 255)
-comparison.save(REEVAL_MASK_COMPARISON, optimize=True)
-iou = intersection / union if union else 0.0
 
-target_ratio = target_analysis["head"]["canonical_heads_tall"]["pixel_value"]
-render_ratio = render_analysis["head"]["canonical_heads_tall"]["pixel_value"]
-ratio_error = abs(render_ratio - target_ratio) / target_ratio
+def _box_wh(box):
+    return box["xmax"] - box["xmin"] + 1, box["ymax"] - box["ymin"] + 1
 
-eye_center_errors = []
-eye_size_errors = []
-for side in ["left", "right"]:
-    target_eye = target_analysis["eyes"][side]
-    render_eye = render_analysis["eyes"][side]
-    target_center = target_eye["eye_center"]["pixel_value"]
-    render_center = render_eye["eye_center"]["pixel_value"]
-    eye_center_errors.append(math.dist(target_center, render_center) / target_analysis["head"]["max_width_row"]["pixel_value"]["width"])
-    target_box = target_eye["eye_bounding_box"]["pixel_value"]
-    render_box = render_eye["eye_bounding_box"]["pixel_value"]
-    target_width = target_box["xmax"] - target_box["xmin"] + 1
-    target_height = target_box["ymax"] - target_box["ymin"] + 1
-    render_width = render_box["xmax"] - render_box["xmin"] + 1
-    render_height = render_box["ymax"] - render_box["ymin"] + 1
-    eye_size_errors.append((abs(render_width - target_width) / target_width + abs(render_height - target_height) / target_height) / 2)
 
-target_hands = target_analysis["arms_hands"]["hand_bounding_boxes"]
-render_hands = render_analysis["arms_hands"]["hand_bounding_boxes"]
-hand_errors = []
-for side in ["left", "right"]:
-    if measured(target_hands[side]) and measured(render_hands[side]):
-        tb = target_hands[side]["pixel_value"]
-        rb = render_hands[side]["pixel_value"]
-        tw, th = tb["xmax"] - tb["xmin"] + 1, tb["ymax"] - tb["ymin"] + 1
-        rw, rh = rb["xmax"] - rb["xmin"] + 1, rb["ymax"] - rb["ymin"] + 1
-        hand_errors.append((abs(rw - tw) / tw + abs(rh - th) / th) / 2)
+def _gate_result(value_for_pass, comparison, threshold):
+    if comparison == ">=":
+        return value_for_pass >= threshold
+    if comparison == "<=":
+        return value_for_pass <= threshold
+    raise ValueError(comparison)
 
-metrics = {
-    "schema": "Ava_Front_vFit01_Reevaluation_v1.1",
-    "status": "REVIEW_REQUIRED",
-    "geometry_lock": "Ava_Geometry_Lock_v1.1.json",
-    "target_mask": "Ava_Target_Front_Mask.png",
-    "render_mask": "Front_vFit01_Reeval_RenderMask.png",
-    "metrics": {
-        "HeadBodyRatioError": metric("calculated", "abs(render-target)/target", target_ratio, render_ratio, ratio_error, 0.02, ratio_error <= 0.02),
-        "EyeCenterError": metric("calculated", "mean Euclidean eye-center distance / target head width", [target_analysis["eyes"][s]["eye_center"]["pixel_value"] for s in ["left", "right"]], [render_analysis["eyes"][s]["eye_center"]["pixel_value"] for s in ["left", "right"]], sum(eye_center_errors) / len(eye_center_errors), 0.02, max(eye_center_errors) <= 0.02),
-        "EyeSizeError": metric("calculated", "mean relative bbox width/height error", [target_analysis["eyes"][s]["eye_bounding_box"]["pixel_value"] for s in ["left", "right"]], [render_analysis["eyes"][s]["eye_bounding_box"]["pixel_value"] for s in ["left", "right"]], sum(eye_size_errors) / len(eye_size_errors), 0.03, max(eye_size_errors) <= 0.03),
-        "ListeningModuleCenterError": metric("manual_review_required", "Euclidean module-center distance / target head width", None, None, None, 0.03, note="Full target circles are occluded by hair."),
-        "ListeningModuleDiameterError": metric("manual_review_required", "abs(render-target)/target", None, None, None, 0.03, note="Full target outer diameters are occluded by hair."),
-        "TorsoWidthError": metric("manual_review_required", "abs(render-target)/character_height", None, None, None, 0.03, note="Target torso and arm shells touch."),
-        "HandScaleError": metric("calculated" if hand_errors else "manual_review_required", "mean relative hand-bbox width/height error", [bbox_value(target_hands[s]) for s in ["left", "right"]], [bbox_value(render_hands[s]) for s in ["left", "right"]], (sum(hand_errors) / len(hand_errors)) if hand_errors else None, 0.03, max(hand_errors) <= 0.03 if hand_errors else None),
-        "ThighWidthError": metric("manual_review_required", "abs(render-target)/character_height", None, None, None, 0.03, note="Target thigh/pelvis boundary is occluded."),
-        "FootWidthError": metric("manual_review_required", "abs(render-target)/character_height", None, None, None, 0.03, note="Target foot/shin boundary requires human annotation."),
-        "SilhouetteIoU": metric("calculated", "intersection(TargetMask,RenderMask)/union(TargetMask,RenderMask)", target_segmentation["foreground_pixel_count"], render_segmentation["foreground_pixel_count"], iou, 0.90, iou >= 0.90),
-    },
-    "target_segmentation": target_segmentation,
-    "render_segmentation": render_segmentation,
-    "manual_review_required": target_analysis["manual_review_required"],
-    "lock_integrity": {
-        "target_sha256_before": target_hash_before,
-        "target_sha256_after": sha256(TARGET),
-        "target_unchanged": target_hash_before == sha256(TARGET),
-    },
-    "geometry_modified": False,
-    "rig_modified": False,
-    "animation_modified": False,
-}
-with open(REEVAL_METRICS, "w", encoding="utf-8") as handle:
-    json.dump(metrics, handle, indent=2)
 
-old_geometry = json.load(open(os.path.join(LOCK_DIR, "Ava_Geometry_Lock_v1.0.json"), encoding="utf-8"))
-new_head_height = target_analysis["head"]["height"]["normalized_value"]
-new_heads_tall = target_ratio
-new_eye_centers = [target_analysis["eyes"][side]["eye_center"]["normalized_value"] for side in ["left", "right"]]
-new_eye_boxes = [target_analysis["eyes"][side]["eye_bounding_box"]["normalized_value"] for side in ["left", "right"]]
-changelog = f"""# Ava Geometry Lock v1.0 → v1.1 Changes
+def compute_front_metrics(lock, gates, target_mask, render_mask, render_analysis, render_segmentation):
+    """Front metrics. Target values come from the approved Geometry Lock (authority 2), the target
+    silhouette from the checksum-locked mask file. Formulas match Ava_RebuildVisualLock_v1.1.py."""
+    L = lock["landmarks"]
+    blocking = gates["blocking_gates"]
+    secondary = gates["secondary_metrics"]
+    results = {}
 
-## Authority repair
+    # SilhouetteIoU
+    intersection = union = target_count = render_count = 0
+    for y in range(HEIGHT):
+        t_row, r_row = target_mask[y], render_mask[y]
+        for x in range(WIDTH):
+            t, r = t_row[x], r_row[x]
+            target_count += t
+            render_count += r
+            intersection += t and r
+            union += t or r
+    iou = intersection / union if union else 0.0
+    g = blocking["SilhouetteIoU"]
+    results["SilhouetteIoU"] = {"status": "calculated", "blocking": True, "formula": g["formula"],
+        "target_measurement": {"foreground_pixels": target_count},
+        "rendered_measurement": {"foreground_pixels": render_count, "intersection": intersection, "union": union},
+        "value": iou, "comparison": g["comparison"], "threshold": g["threshold"],
+        "pass": _gate_result(iou, g["comparison"], g["threshold"])}
 
-Version 1.1 is derived directly from `Ava_Target_Front.png`. It does not reuse conflicting v1.0 numeric geometry. The canonical raster now overrides v1.0, the approximate `~2.5 heads` prose, and the Blender implementation.
+    # HeadBodyRatioError
+    target_ratio = L["head"]["canonical_heads_tall"]["pixel_value"]
+    render_ratio = render_analysis["head"]["canonical_heads_tall"]["pixel_value"]
+    ratio_error = abs(render_ratio - target_ratio) / target_ratio
+    g = blocking["HeadBodyRatioError"]
+    results["HeadBodyRatioError"] = {"status": "calculated", "blocking": True, "formula": g["formula"],
+        "target_measurement": {"heads_tall": target_ratio, "character_height_px": L["character"]["total_height"]["pixel_value"], "head_height_px": L["head"]["height"]["pixel_value"]},
+        "rendered_measurement": {"heads_tall": render_ratio, "character_height_px": render_analysis["character"]["total_height"]["pixel_value"], "head_height_px": render_analysis["head"]["height"]["pixel_value"]},
+        "value": ratio_error, "comparison": g["comparison"], "threshold": g["threshold"],
+        "pass": _gate_result(ratio_error, g["comparison"], g["threshold"])}
 
-The canonical image SHA-256 remains `{target_hash_before}`.
+    # Eyes
+    head_width = L["head"]["max_width_row"]["pixel_value"]["width"]
+    center_errors, size_errors, t_centers, r_centers, t_boxes, r_boxes = [], [], [], [], [], []
+    for side in ("left", "right"):
+        tc = L["eyes"][side]["eye_center"]["pixel_value"]
+        rc = render_analysis["eyes"][side]["eye_center"]["pixel_value"]
+        center_errors.append(math.dist(tc, rc) / head_width)
+        tb = L["eyes"][side]["eye_bounding_box"]["pixel_value"]
+        rb = render_analysis["eyes"][side]["eye_bounding_box"]["pixel_value"]
+        tw, th = _box_wh(tb)
+        rw, rh = _box_wh(rb)
+        size_errors.append((abs(rw - tw) / tw + abs(rh - th) / th) / 2)
+        t_centers.append(tc); r_centers.append(rc); t_boxes.append(tb); r_boxes.append(rb)
+    for name, errors, tv, rv in (("EyeCenterError", center_errors, t_centers, r_centers),
+                                 ("EyeSizeError", size_errors, t_boxes, r_boxes)):
+        g = blocking[name]
+        results[name] = {"status": "calculated", "blocking": True, "formula": g["formula"],
+            "normalization": g.get("normalization"), "target_measurement": tv, "rendered_measurement": rv,
+            "per_eye": {"left": errors[0], "right": errors[1]},
+            "value": sum(errors) / len(errors), "reported_value_rule": g["reported_value"],
+            "pass_rule": g["pass_rule"], "comparison": g["comparison"], "threshold": g["threshold"],
+            "pass": _gate_result(max(errors), g["comparison"], g["threshold"])}
 
-## Replaced values
+    # Listening modules: evaluated only when the target is directly measurable.
+    modules = L["listening_modules"]
+    measurable = all(modules[s].get("status") == "measured" for s in ("left", "right"))
+    for name in ("ListeningModuleCenterError", "ListeningModuleDiameterError"):
+        g = blocking[name]
+        if measurable:
+            raise RuntimeError("Listening-module targets are now measured in the lock, but render-side module "
+                               "measurement is not implemented. Implement it under a new approved tool version.")
+        results[name] = {"status": "manual_review_required", "blocking": True, "formula": g["formula"],
+            "target_measurement": None, "rendered_measurement": None, "value": None,
+            "comparison": g["comparison"], "threshold": g["threshold"],
+            "reason": modules["left"].get("reason", "Target not directly measurable.")}
 
-| Measurement | v1.0 value | v1.1 raster-derived value | Resolution |
-|---|---:|---:|---|
-| Head height / character height | `{old_geometry['proportion_lock']['head_height']}` | `{new_head_height:.9f}` ({target_analysis['head']['height']['pixel_value']} px) | Replaced with mask-derived head contraction boundary. |
-| Heads tall | `{old_geometry['proportion_lock']['target_heads_tall']}` | `{new_heads_tall:.9f}` | Exact raster ratio replaces approximate prose. |
-| Image-left eye center | `{old_geometry['face']['eye_center_L']}` | `{new_eye_centers[0]}` | Replaced with local eye-feature bbox center. |
-| Image-right eye center | `{old_geometry['face']['eye_center_R']}` | `{new_eye_centers[1]}` | Replaced with local eye-feature bbox center. |
-| Eye bounds | width `{old_geometry['face']['eye_width']}`, height `{old_geometry['face']['eye_height']}` | left `{new_eye_boxes[0]}`, right `{new_eye_boxes[1]}` | Replaced with raster feature bounds. |
-| Listening-module center/diameter | centers `{old_geometry['listening_modules']['center_L']}`, `{old_geometry['listening_modules']['center_R']}`; diameter `{old_geometry['listening_modules']['outer_diameter']}` | `manual_review_required` | Full circles are occluded by hair; v1.0 exact values were unsupported. |
-| Torso/waist/pelvis exact widths | v1.0 numeric estimates | `manual_review_required` | Touching/overlapping raster shells prevent unambiguous isolation. |
-| Joint centers and segment lengths | v1.0 numeric estimates | `manual_review_required` | Joint centers are visually occluded and cannot be stored as exact raster measurements. |
-| Foot dimensions | v1.0 numeric estimates | `manual_review_required` | Foot/shin boundary and floor contact require human annotation. |
+    # Secondary: HandScaleError (non-blocking)
+    t_hands = L["arms_hands"]["hand_bounding_boxes"]
+    r_hands = render_analysis["arms_hands"]["hand_bounding_boxes"]
+    hand_errors = {}
+    for side in ("left", "right"):
+        if measured(t_hands[side]) and measured(r_hands[side]):
+            tw, th = _box_wh(t_hands[side]["pixel_value"])
+            rw, rh = _box_wh(r_hands[side]["pixel_value"])
+            hand_errors[side] = (abs(rw - tw) / tw + abs(rh - th) / th) / 2
+    s = secondary["HandScaleError"]
+    if hand_errors:
+        value = sum(hand_errors.values()) / len(hand_errors)
+        results["HandScaleError"] = {"status": "calculated", "blocking": False, "formula": s["formula"],
+            "target_measurement": [bbox_value(t_hands[k]) for k in ("left", "right")],
+            "rendered_measurement": [bbox_value(r_hands[k]) for k in ("left", "right")],
+            "per_hand": hand_errors, "value": value, "reference_threshold": s["reference_threshold"],
+            "within_reference_threshold": max(hand_errors.values()) <= s["reference_threshold"],
+            "note": s["note"]}
+    else:
+        results["HandScaleError"] = {"status": "manual_review_required", "blocking": False, "formula": s["formula"],
+            "value": None, "note": "Hand components not isolated in both images."}
+    for name in ("TorsoWidthError", "ThighWidthError", "FootWidthError"):
+        results[name] = {"status": "manual_review_required", "blocking": False,
+                         "formula": secondary[name]["formula"], "value": None}
 
-## Metric changes
+    calculated_blocking = [k for k, v in results.items() if v["blocking"] and v["status"] == "calculated"]
+    failing = [k for k in calculated_blocking if not results[k]["pass"]]
+    manual = [k for k, v in results.items() if v["status"] == "manual_review_required"]
+    summary = {
+        "front_identity_gates": "PASS" if not failing else "FAIL",
+        "calculated_blocking_gates": calculated_blocking,
+        "failing_blocking_gates": failing,
+        "manual_review_required_metrics": manual,
+        "rule": gates["overall_rule"],
+        "visual_approval": "NOT_GRANTED_BY_METRICS — human review approves character fidelity.",
+    }
+    return results, summary
 
-- Silhouette comparison now uses `Ava_Target_Front_Mask.png` against `Front_vFit01_Reeval_RenderMask.png`; RGB difference is not used for IoU.
-- Eye-center error is normalized by raster-derived head width.
-- Eye-size error is normalized independently by target eye width and height.
-- Body landmark errors use canonical character height.
-- Ambiguous targets have no pass/fail result.
 
-## Remaining human review
+def save_overlay(target_image, render_image, path):
+    Image.blend(target_image, render_image, 0.5).save(path, optimize=True)
 
-""" + "\n".join(f"- `{item}`" for item in target_analysis["manual_review_required"]) + "\n"
-with open(CHANGELOG_PATH, "w", encoding="utf-8") as handle:
-    handle.write(changelog)
 
-print(json.dumps({
-    "geometry_lock": GEOMETRY_PATH,
-    "target_mask": TARGET_MASK_PATH,
-    "landmarks": LANDMARK_PATH,
-    "changelog": CHANGELOG_PATH,
-    "reeval_metrics": REEVAL_METRICS,
-    "silhouette_iou": iou,
-    "target_unchanged": target_hash_before == sha256(TARGET),
-    "manual_review_count": len(target_analysis["manual_review_required"]),
-}, indent=2))
+def save_difference(target_image, render_image, path):
+    ImageEnhance.Contrast(ImageChops.difference(target_image, render_image)).enhance(2.4).save(path, optimize=True)
+
+
+def save_mask_comparison(target_mask, render_mask, path):
+    """White = both, red = target only (render missing), cyan = render only (render extra)."""
+    image = Image.new("RGB", (WIDTH, HEIGHT), (0, 0, 0))
+    px = image.load()
+    for y in range(HEIGHT):
+        for x in range(WIDTH):
+            t, r = target_mask[y][x], render_mask[y][x]
+            if t and r:
+                px[x, y] = (255, 255, 255)
+            elif t:
+                px[x, y] = (255, 70, 70)
+            elif r:
+                px[x, y] = (0, 200, 255)
+    image.save(path, optimize=True)
+
+
+def save_landmark_visualization(render_image, lock, render_analysis, path, title):
+    """Render with its measured landmarks (green) and the Geometry Lock target landmarks (red)."""
+    canvas = render_image.copy().convert("RGB")
+    draw = ImageDraw.Draw(canvas)
+    try:
+        font = ImageFont.truetype("arial.ttf", 12)
+    except Exception:
+        font = ImageFont.load_default()
+    target_color, render_color = (230, 40, 40), (0, 170, 60)
+    L = lock["landmarks"]
+
+    def box(record, color, width=2):
+        if record.get("status") == "measured":
+            b = record["pixel_value"]
+            draw.rectangle((b["xmin"], b["ymin"], b["xmax"], b["ymax"]), outline=color, width=width)
+
+    def dot(point, color, r=3):
+        draw.ellipse((point[0] - r, point[1] - r, point[0] + r, point[1] + r), outline=color, width=2)
+
+    for source, color in ((L, target_color), (render_analysis, render_color)):
+        bounds = source["character"]["bounding_box"]["pixel_value"]
+        draw.rectangle((bounds["xmin"], bounds["ymin"], bounds["xmax"], bounds["ymax"]), outline=color, width=1)
+        head_bottom = round(source["head"]["bottom"]["pixel_value"][1])
+        draw.line((0, head_bottom, WIDTH - 1, head_bottom), fill=color, width=1)
+        for side in ("left", "right"):
+            box(source["eyes"][side]["eye_bounding_box"], color)
+            dot(source["eyes"][side]["eye_center"]["pixel_value"], color)
+            box(source["arms_hands"]["hand_bounding_boxes"][side], color)
+    draw.rectangle((8, 8, 330, 64), fill=(255, 255, 255), outline=(0, 0, 0))
+    draw.text((14, 12), title, fill=(0, 0, 0), font=font)
+    draw.text((14, 28), "Red: Geometry Lock v1.1 target landmarks", fill=target_color, font=font)
+    draw.text((14, 44), "Green: landmarks measured on this render", fill=render_color, font=font)
+    canvas.save(path, optimize=True)
+
+
+def find_identical_prior_artifacts(root, output_paths, exclude_dir):
+    """Map each output to any byte-identical file elsewhere under 05_Renders/Visual_Lock."""
+    renders = os.path.join(root, "05_Renders", "Visual_Lock")
+    exclude_dir = os.path.abspath(exclude_dir)
+    prior = {}
+    for dirpath, _, files in os.walk(renders):
+        if os.path.abspath(dirpath).startswith(exclude_dir):
+            continue
+        for name in files:
+            path = os.path.join(dirpath, name)
+            prior.setdefault(file_sha256(path), []).append(rel(root, path))
+    hits = {}
+    for key, path in output_paths.items():
+        matches = prior.get(file_sha256(path), [])
+        if matches:
+            hits[key] = matches
+    return hits
